@@ -1,0 +1,21 @@
+/* custom css here */
+
+body {
+    background-color: #e6e6e6;
+    font-family: "Open Sans", sans-serif;
+}
+.container {
+    background-color: #fff;
+}
+
+.divider {
+    height: 2px; 
+    background-color: grey; 
+    text-align: center;
+}
+.hotspot {
+    border: 1px solid #2A9FD8;
+    background: rgba(0,173,255,.54);
+    text-indent: -9999px;
+    cursor: pointer;
+}
