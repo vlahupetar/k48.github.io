@@ -4,6 +4,16 @@ body {
     background-color: #e6e6e6;
     font-family: "Open Sans", sans-serif;
 }
+.form-group input, .form-group select {
+    background-color: #F0F0F0;
+    border: 0;
+}
+header .row h6 {
+    margin-top: 29px;
+}
+header .row h6 strong {
+    font-size: 18px;
+}
 h3 {
     margin-top: 7px;
 }
@@ -16,19 +26,16 @@ h3 {
 .divider:before {
     content: '';
     position: absolute;
-    width: 100%;
+    width: 97%;
     display: block;
     height: 2px; 
     background-color: grey;
     top: 50%;
     z-index: 0;
 }
-.divider .nav-pills {
-    text-align: center;
-}
-.divider .nav-pills li {
-    float: none;
-    display: inline-block;
+.divider .btn-group .active {
+    background-color: #0D77BF;
+    color: #fff;
 }
 .hotspot {
     border: 1px solid #2A9FD8;
