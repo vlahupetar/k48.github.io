@@ -43,8 +43,7 @@ $(document).ready(function(){
         $(this).parent().addClass('hidden');
         $(this).parent().prev().remove();
 	})
-	// autocomplete countries
-	$(".js-example-basic-single").select2();
+	
 	$('.addNumber').click(function(e){
 		e.preventDefault();
 		var $this = $(this);
@@ -52,6 +51,22 @@ $(document).ready(function(){
         $(this).parent().addClass('hidden');
         $(this).parent().prev().remove();
 	})
-	// select
-	$("#select2-countriesBillingEnterprise-container").text();
+	// autocomplete countries
+	$(".js-example-basic-single").select2();
+	$(".select2-selection__arrow").remove();
+
+	// select countries and states for USA
+
+	$('#countriesBillingEnterprise').on('change', function(){
+		if ($("#select2-countriesBillingEnterprise-container").text() !== 'United States') {
+			state
+			$('#state').parent().removeClass('hidden');
+			$('#statesUS').parent().addClass('hidden');
+		} else {
+			$('#state').parent().addClass('hidden');
+			$('#statesUS').parent().removeClass('hidden');
+		}
+	})
+	
+
 });

@@ -137,9 +137,18 @@ header .row h6 {
     background-color: #0D77BF;
     color: #fff;
 }
+#enterprise .wrapper .select2-container {
+    width: 100% !important;
+}
 .select2-container--default .select2-selection--single {
     border-radius: 0;
 }
+.select2-container .select2-selection--single {
+    height: 35px;
+    border: 1px solid #cbd5dd;
+    padding: 2px 0 0 2px;
+}
+
 /*media*/
 @media (max-width: 767px){
     .divider {
