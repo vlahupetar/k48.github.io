@@ -6,21 +6,10 @@ body {
 
 label {
     margin: 15px 0 8px 0;
-    color: #444;
 }
 
 h3 {
     margin-top: 7px;
-}
-select.form-control {
-    color: #444;
-}
-
-.form-group input, .form-group select {
-    background-color: #F0F0F0;
-    border: 0;
-    box-shadow: none;
-    border-radius: 7px;
 }
 
 header .row h6 strong, label strong {
@@ -67,8 +56,7 @@ header .row h6 {
 .required:before {
     content: '*';
     position: absolute;
-    left: 1px;
-    margin-top: -9px;
+    left: 3px;
     color: #d3222a;
     font-size: 16px;
 }
@@ -128,10 +116,30 @@ header .row h6 {
     padding-top: 15px;
 }
 
-.submitForm .btn.btn-primary.btn-lg {
-    border-radius: 3px;
+/* autocomplete */
+
+.typeahead.dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  float: left;
+  padding: 4px 0;
+  margin: 2px 0 0 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 
+.typeahead.dropdown-menu li {
+    padding: 5px;
+}
+
+.typeahead.dropdown-menu li:hover {
+    background-color: #0D77BF;
+    color: #fff;
+}
+.select2-container--default .select2-selection--single {
+    border-radius: 0;
+}
 /*media*/
 @media (max-width: 767px){
     .divider {
