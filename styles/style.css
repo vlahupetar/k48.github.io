@@ -5,7 +5,11 @@ body {
 }
 
 label {
-    margin: 15px 0 8px 0;
+    margin: 20px 0 6px 0;
+}
+
+section {
+    margin-top: 20px;
 }
 
 h3 {
@@ -117,26 +121,6 @@ header .row h6 {
 }
 
 /* autocomplete */
-
-.typeahead.dropdown-menu {
-  position: absolute;
-  z-index: 1000;
-  float: left;
-  padding: 4px 0;
-  margin: 2px 0 0 0;
-  list-style: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
-}
-
-.typeahead.dropdown-menu li {
-    padding: 5px;
-}
-
-.typeahead.dropdown-menu li:hover {
-    background-color: #0D77BF;
-    color: #fff;
-}
 #enterprise .wrapper .select2-container {
     width: 100% !important;
 }
@@ -162,4 +146,15 @@ header .row h6 {
     #accountDetails {
         padding: 0 100px;
     }
+}
+input.error, input.error:focus, select.error, select.error:focus {
+   border: 1px solid #d3222a;
+}
+.error+.error {
+    color: #d3222a;
+}
+#errormessages {
+    color: #d3222a;
+    font-size: 18px;
+    font-weight: 700;
 }
