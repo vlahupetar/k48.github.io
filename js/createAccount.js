@@ -79,11 +79,9 @@ $(document).ready(function(){
     });
     $('#countriesShipping').on('change', function(){
         if ($("#select2-countriesShipping-container").text() !== 'United States') {
-            console.log('shipping others working');
             $('#stateShippingOthers').parent().removeClass('hidden');
             $('#statesUSShipping').parent().addClass('hidden');
         } else {
-            console.log('shipping working');
             $('#stateShippingOthers').parent().addClass('hidden');
             $('#statesUSShipping').parent().removeClass('hidden');
         }
@@ -153,9 +151,7 @@ $(document).ready(function(){
         },
         errorElement: "div",
         submitHandler: function(form, event) {
-            console.log("before");
             event.preventDefault();
-            console.log("after");
             $("#enterprise :input").prop("disabled", true);
             $("#enterprise :checkbox").prop("disabled", true);
             $(".spinner-container").css("display", "block");
@@ -229,11 +225,11 @@ $(document).ready(function(){
                 });
                 // we should also add/remove some validation for additional address fields
                 // in cases it is showing or not
-                if($("#showShippingEnterprise").is(":checked") && !($("#sameShippingEnterprise").is(":checked"))) {
-                    console.log("condition works");
+                /*if($("#showShippingEnterprise").is(":checked") && !($("#sameShippingEnterprise").is(":checked"))) {
+                    
                 } else {
-                    console.log("some shit happened");
-                }
+
+                }*/
 
                 // required logic for state field will be applied
                 // only if state relates not to US
