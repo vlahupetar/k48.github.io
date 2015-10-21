@@ -63,7 +63,7 @@
                                     <div class="row">
                                         <br>
                                         <div class="col-md-12">
-                                            <a href="#" class="addNumber">Add number</a>
+                                            <a href="#" class="addNumber">+ Add number</a>
                                         </div>
                                         <div class="col-md-12 hidden">
                                             <label for="additionalCorporatePhone">Additional Phone Number</label>
@@ -117,7 +117,7 @@
                         </div>
                         <div class="row header">
                             <div class="col-md-12 title divider">
-                                <h3 class=""><span>Addresses</span></h3>
+                                <h3><span>Addresses</span></h3>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -271,7 +271,7 @@
                                             </div>
                                             <div class="shippingAddress hidden" id="shippingBlockEnterprise">
                                                 <label for="countriesShipping">Countries</label>
-                                                <select id="countriesShipping" class="form-control js-example-basic-single countries">
+                                                <select id="countriesShipping" class="form-control js-example-basic-single countries" name="countriesShipping">
                                                     <option value="AF">Afghanistan</option>
                                                     <option value="AL">Albania</option>
                                                     <option value="DZ">Algeria</option>
@@ -293,19 +293,19 @@
                                                     <option value="VU">Vanuatu</option>
                                                 </select>
                                                 <label for="address1Shipping">Address Line 1</label>
-                                                <input type="text" class="form-control" id="address1Shipping" maxlength="30">
+                                                <input type="text" class="form-control" id="address1Shipping" name="address1Shipping" maxlength="30">
                                                 <label for="address2Shipping">Address Line 2</label>
-                                                <input type="text" class="form-control" id="address2Shipping" maxlength="30">
+                                                <input type="text" class="form-control" id="address2Shipping" name="address2Shipping" maxlength="30">
                                                 <label for="cityShipping">City</label>
-                                                <input type="text" class="form-control" id="cityShipping" maxlength="18">
+                                                <input type="text" class="form-control" id="cityShipping" name="cityShipping" maxlength="18">
                                                 <div class="row">
                                                     <div class="col-md-8 hidden">
                                                         <label for="stateShippingOthers" class="required">State</label>
-                                                        <input type="text" class="form-control" id="stateShippingOthers" maxlength="20">
+                                                        <input type="text" class="form-control" id="stateShippingOthers" name="stateShippingOthers" maxlength="20">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <label for="statesUSShipping" class="required">State</label>
-                                                        <select id="statesUSShipping" class="form-control js-example-basic-single">
+                                                        <select id="statesUSShipping" class="form-control js-example-basic-single" name="statesUSShipping">
                                                             <option value="AL">Alabama</option>
                                                             <option value="AK">Alaska</option>
                                                             <option value="ME">Maine</option>
@@ -323,7 +323,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label for="postalCodeShipping" class="required">Postal Code</label>
-                                                        <input type="text" class="form-control" id="postalCodeShipping" maxlength="10">
+                                                        <input type="text" class="form-control" id="postalCodeShipping" name="postalCodeShipping" maxlength="10">
                                                     </div>
                                                 </div>
                                             </div>
@@ -351,6 +351,10 @@
                         <div class="row form-group">
                             <div class="col-md-4 col-xs-4 submitForm">
                                 <button type="submit" class="btn btn-primary btn-lg" id="submitTheForm">Create Account</button>
+                                <svg class="spinner" id="accountSpinner" width="30px" height="30px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                                </svg>
+
                             </div>
                         </div>    
                     </form>

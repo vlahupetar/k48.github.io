@@ -131,159 +131,200 @@ $(document).ready(function(){
             state: {
                 minlength: 2,
                 maxlength: 20
+            },
+            // service addresses
+            address1Shipping: {
+                minlength: 5,
+                maxlength: 20
+            },
+            cityShipping: {
+                minlength: 3,
+                maxlength: 20
+            },
+            postalCodeShipping: {
+                minlength: 2,
+                maxlength: 20,
+                number: true
+            },
+            stateShippingOthers: {
+                minlength: 2,
+                maxlength: 20
             }
         },
         errorElement: "div",
-        submitHandler: function(form) {
+        submitHandler: function(form, event) {
+            console.log("before");
+            event.preventDefault();
+            console.log("after");
+            $("#enterprise :input").prop("disabled", true);
+            $("#enterprise :checkbox").prop("disabled", true);
+            $("#accountSpinner").css("display", "block");
+            $("#accountSpinner").css("opacity", "0.7");
+            
+            setTimeout(function(){
             // adding required fields logic after click on submit button
-            $("#corporateEmail").rules("add", {
-                required: true,
-                messages: {
-                    required: "Email is required"
-                }
-            });
-            $("#firstName").rules("add", {
-                required: true,
-                lettersonly: true,
-                messages: {
-                    required: "First name field is required"
-                }
-            });
-            $("#LastName").rules("add", {
-                required: true,
-                lettersonly: true,
-                messages: {
-                    required: "Last name field is required"
-                }
-            });
-            $("#companyName").rules("add", {
-                required: true,
-                lettersonly: true,
-                messages: {
-                    required: "Company name field is required"
-                }
-            });
-            $("#billCycle").rules("add", {
-                required: true,
-                messages: {
-                    required: "Please select an item"
-                }
-            });
-            $("#invoiceType").rules("add", {
-                required: true,
-                messages: {
-                    required: "Please select an item"
-                }
-            });
-            $("#accountCategory").rules("add", {
-                required: true,
-                messages: {
-                    required: "Please select an item"
-                }
-            });
-            $("#address1Billing").rules("add", {
-                required: true,
-                messages: {
-                    required: "Address field is required"
-                }
-            });
-            $("#cityBilling").rules("add", {
-                required: true,
-                messages: {
-                    required: "City field is required"
-                }
-            });
-            $("#postalCodeBilling").rules("add", {
-                required: true,
-                messages: {
-                    required: "Postal Code is required"
-                }
-            });
-
-            // required logic for state field will be applied
-            // only if state relates not to US
-            // in this case there is required text field on the page
-            // if coutry is US
-            // state is filled by default, there will be no possibility
-            // to make it empty
-            if(!($("#state").parent().is(":visible"))){
-                $("#state").rules("add", {
+                $("#accountSpinner").css("display", "none");
+                $("#enterprise :input").prop("disabled", false);
+                $("#enterprise :checkbox").prop("disabled", false);
+                $("#accountSpinner").css("display", "none");
+                $("#accountSpinner").css("opacity", "1");
+                $("#corporateEmail").rules("add", {
                     required: true,
                     messages: {
-                        required: "State is required"
+                        required: "Email is required"
                     }
                 });
-            } else {
-                $("#state").rules("add", {
-                    required: false
+                $("#firstName").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "First name field is required"
+                    }
                 });
-            }
-            if ($("#enterprise").valid()){
-                // here validation from backend should be applied
-                $("#errormessages").removeClass('hidden');
-                form.submit();
-            } else {
-                // here added behaviors for temporary removal of 'required' errors
-                // this should be done after click on related field
-                $('html, body').animate({
-                    scrollTop: $(".error:first").offset().top + (-40)
-                }, 100);
-                $('#corporateEmail').on('click', function(){
-                    $("#corporateEmail").rules("add", {
-                        required: false
+                $("#LastName").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Last name field is required"
+                    }
+                });
+                $("#companyName").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Company name field is required"
+                    }
+                });
+                $("#billCycle").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Please select an item"
+                    }
+                });
+                $("#invoiceType").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Please select an item"
+                    }
+                });
+                $("#accountCategory").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Please select an item"
+                    }
+                });
+                $("#address1Billing").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Address field is required"
+                    }
+                });
+                $("#cityBilling").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "City field is required"
+                    }
+                });
+                $("#postalCodeBilling").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Postal Code is required"
+                    }
+                });
+                // we should also add/remove some validation for additional address fields
+                // in cases it is showing or not
+                if($("#showShippingEnterprise").is(":checked") && !($("#sameShippingEnterprise").is(":checked"))) {
+                    console.log("condition works");
+                } else {
+                    console.log("some shit happened");
+                }
+
+                // required logic for state field will be applied
+                // only if state relates not to US
+                // in this case there is required text field on the page
+                // if coutry is US
+                // state is filled by default, there will be no possibility
+                // to make it empty
+                if(!($("#state").parent().is(":visible"))) {
+                    $("#state").rules("add", {
+                        required: true,
+                        messages: {
+                            required: "State is required"
+                        }
                     });
-                });
-                $('#firstName').on('click', function(){
-                    $("#firstName").rules("add", {
-                        required: false
-                    });
-                });
-                $('#LastName').on('click', function(){
-                    $("#LastName").rules("add", {
-                        required: false
-                    });
-                });
-                $('#companyName').on('click', function(){
-                    $("#companyName").rules("add", {
-                        required: false
-                    });
-                });
-                $('#billCycle').on('click', function(){
-                    $("#billCycle").rules("add", {
-                        required: false
-                    });
-                });
-                $('#invoiceType').on('click', function(){
-                    $("#invoiceType").rules("add", {
-                        required: false
-                    });
-                });
-                $('#accountCategory').on('click', function(){
-                    $("#accountCategory").rules("add", {
-                        required: false
-                    });
-                });
-                $('#address1Billing').on('click', function(){
-                    $("#address1Billing").rules("add", {
-                        required: false
-                    });
-                });
-                $('#cityBilling').on('click', function(){
-                    $("#cityBilling").rules("add", {
-                        required: false
-                    });
-                });
-                $('#postalCodeBilling').on('click', function(){
-                    $("#postalCodeBilling").rules("add", {
-                        required: false
-                    });
-                });
-                $('#state').on('click', function(){
+                } else {
                     $("#state").rules("add", {
                         required: false
                     });
-                });
-            }
+                }
+                if ($("#enterprise").valid()){
+                    // here validation from backend should be applied
+                    $("#errormessages").parent().removeClass('hidden');
+                    $('html, body').animate({
+                        scrollTop: $("#errormessages").offset().top + (-40)
+                    }, 100);
+                    
+                    //form.submit();
+                } else {
+                    // here added behaviors for temporary removal of 'required' errors
+                    // this should be done after click on related field
+                    $('html, body').animate({
+                        scrollTop: $(".error:first").offset().top + (-40)
+                    }, 100);
+                    $('#corporateEmail').on('focus', function(){
+                        $("#corporateEmail").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#firstName').on('focus', function(){
+                        $("#firstName").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#LastName').on('focus', function(){
+                        $("#LastName").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#companyName').on('focus', function(){
+                        $("#companyName").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#billCycle').on('focus', function(){
+                        $("#billCycle").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#invoiceType').on('focus', function(){
+                        $("#invoiceType").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#accountCategory').on('focus', function(){
+                        $("#accountCategory").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#address1Billing').on('focus', function(){
+                        $("#address1Billing").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#cityBilling').on('focus', function(){
+                        $("#cityBilling").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#postalCodeBilling').on('focus', function(){
+                        $("#postalCodeBilling").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#state').on('focus', function(){
+                        $("#state").rules("add", {
+                            required: false
+                        });
+                    });
+                }
+            }, 3000)
         }
     });
 });
