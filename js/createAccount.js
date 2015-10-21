@@ -158,16 +158,15 @@ $(document).ready(function(){
             console.log("after");
             $("#enterprise :input").prop("disabled", true);
             $("#enterprise :checkbox").prop("disabled", true);
-            $("#accountSpinner").css("display", "block");
-            $("#accountSpinner").css("opacity", "0.7");
+            $(".spinner-container").css("display", "block");
+            $("body").css("opacity", "0.7");
             
             setTimeout(function(){
             // adding required fields logic after click on submit button
-                $("#accountSpinner").css("display", "none");
                 $("#enterprise :input").prop("disabled", false);
                 $("#enterprise :checkbox").prop("disabled", false);
-                $("#accountSpinner").css("display", "none");
-                $("#accountSpinner").css("opacity", "1");
+                $(".spinner-container").css("display", "none");
+                $("body").css("opacity", "1");
                 $("#corporateEmail").rules("add", {
                     required: true,
                     messages: {
