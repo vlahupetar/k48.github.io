@@ -33,7 +33,7 @@ header .row h6 strong, label strong {
     color: #444;
 }
 
-.container {
+.container-fluid {
     background-color: #fff;
     position: relative;
 }
