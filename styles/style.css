@@ -5,7 +5,13 @@ body {
 }
 
 label {
-    margin: 20px 0 6px 0;
+    margin: 17px 0 3px 0;
+    position: relative;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin: -2px 0 0;
+    vertical-align: middle;
 }
 
 section {
@@ -13,15 +19,13 @@ section {
 }
 
 h3 {
-    margin-top: 7px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 header .row h6 strong, label strong {
     font-size: 18px;
-}
-
-header .row h6 {
-    margin-top: 25px;
 }
 
 #enterprise h4, #personal h4 {
@@ -31,10 +35,13 @@ header .row h6 {
 
 .container {
     background-color: #fff;
+    position: relative;
 }
-
+#accountDetails {
+    padding: 20px 20px 0;
+}
 .wrapper {
-    padding: 0 15px;
+    padding: 0 70px 0 20px;
     position: relative;
 }
 
@@ -44,6 +51,7 @@ header .row h6 {
 
 .header h3 {
     color: #A5A5A5;
+    font-size: 18px;
 }
 
 .divider {
@@ -60,9 +68,10 @@ header .row h6 {
 .required:before {
     content: '*';
     position: absolute;
-    left: 3px;
+    left: -12px;
     color: #d3222a;
     font-size: 16px;
+    top: -6px;
 }
 
 .row.header .title {
@@ -142,9 +151,22 @@ header .row h6 {
         left: 0;
     }
 }
+@media (min-width: 767px){
+    #nav-container {
+        left: 0;
+    }
+}
+@media (max-width: 991px){
+    .wrapper {
+        padding: 0 0 0 20px;
+    }
+}
 @media (min-width: 1200px){
     #accountDetails {
-        padding: 0 100px;
+        padding: 40px 45px 0 165px;
+    }
+    .container {
+        width: 1024px;
     }
 }
 input.error, input.error:focus, select.error, select.error:focus {
@@ -164,6 +186,8 @@ input.error, input.error:focus, select.error, select.error:focus {
 }
 .addNumber {
     font-weight: 700;
+    margin-top: 10px;
+    display: inline-block;
 }
 .addNumber:hover {
     text-decoration: none;
@@ -199,4 +223,121 @@ input.error, input.error:focus, select.error, select.error:focus {
     stroke-dasharray: 2.3525em, 0.4705em;
     stroke-linecap: round;
     stroke-width: 0.1em;
+}
+
+#nav-container {
+    width: 120px;
+    z-index: 11;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 1px 0 0;
+    background-color: #fafafa;
+}
+#nav-container ul {
+    padding-left: 0;
+    list-style: none;
+}
+#nav>li:first-child>a {
+    border-top: 0;
+}
+#nav>li.active>a {
+    color: #3d77f9;
+}
+#nav>li>a {
+    position: relative;
+    display: block;
+    padding: 15px 15px;
+    color: #091f28;
+}
+#nav>li>a i {
+    font-size: 32px;
+    display: block;
+}
+#nav>li {
+    text-align: center;
+}
+#nav>li:after {
+    content: "";
+    display: block;
+    border-bottom: 1px #ededed solid;
+}
+#nav>li:last-child:after {
+    content: none;
+}
+#nav>li.open>a, #nav>li:hover>a {
+    background-color: #ededed;
+    color: #3d77f9;
+}
+#nav a:hover {
+    text-decoration: none;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #3d77fa;
+}
+.navbar-brand {
+    line-height: 20px;
+    height: 50px;
+    max-width: 90px;
+    padding: 15px 8px;
+}
+.navbar-brand img {
+    max-width: 100%;
+}
+.navbar-form {
+    padding: 0;
+}
+.navbar-form .form-group {
+    display: inline-block;
+}
+.navbar-form input {
+    background-color: #3358d1;
+    border: 1px solid #6581dc;
+    color: #fff;
+    min-width: 270px;
+}
+
+.navbar-form input::-webkit-input-placeholder {
+   color: #6581dc;
+}
+
+.navbar-form input:-moz-placeholder { /* Firefox 18- */
+   color: #6581dc; 
+}
+
+.navbar-form input::-moz-placeholder {  /* Firefox 19+ */
+   color: #6581dc;  
+}
+
+.navbar-form input:-ms-input-placeholder {  
+   color: #6581dc; 
+}
+.btn-link {
+    color: #fff;
+    padding: 6px 12px 6px 6px;
+}
+.btn-link:hover {
+    color: #6581dc;
+}
+.navbar .nav li a {
+    color: #fff;
+}
+.navbar .nav li:hover {
+    color: #6581dc;
+    background-color: transparent;
+}
+.navbar .nav li:hover a {
+    color: #fff;
+    background-color: transparent;
+}
+.navbar .nav li.active a{
+    color: #3d77f9;
+    background-color: #fff;
+    font-weight: 700;
+}
+.navbar .nav li.active a:hover {
+    color: #3d77f9;
+    background-color: #eee;
 }
