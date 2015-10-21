@@ -1,5 +1,10 @@
 $(document).ready(function(){
-    //enterprise form
+    // enterprise form
+    // here is logic to add another block of fields
+    // if user wants to add more than one address
+    // also he can check 'same as billing' checkbox
+    // in this case additional block will be hided
+    // and pre-filled in future
     $('#showShippingEnterprise').click(function(){
         var $this = $(this);
         if ($this.is(':checked')) {
@@ -36,6 +41,8 @@ $(document).ready(function(){
             $('#shippingBlockEnterprise').removeClass('hidden');
         }
     });
+
+    // showing additional phone number in case it is needed
     $('.addNumber').click(function(e){
         e.preventDefault();
         var $this = $(this);
@@ -43,19 +50,15 @@ $(document).ready(function(){
         $(this).parent().addClass('hidden');
         $(this).parent().prev().remove();
     });
-    $('.addNumber').click(function(e){
-        e.preventDefault();
-        var $this = $(this);
-        $(this).parent().next().removeClass('hidden');
-        $(this).parent().addClass('hidden');
-        $(this).parent().prev().remove();
-    });
-    // autocomplete countries
+
+    // autocomplete countries and states
     $(".js-example-basic-single").select2();
+
+    // temp remove of selection arrow
+    // it doesn't match to default browser styles
     $(".select2-selection__arrow").remove();
 
     // select countries and states for USA
-
     $('#countriesBilling').on('change', function(){
         if ($("#select2-countriesBilling-container").text() !== 'United States') {
             $('#state').parent().removeClass('hidden');
@@ -96,11 +99,11 @@ $(document).ready(function(){
                 email: true
             },
             firstName: {
-                minlength: 2,
+                minlength: 3,
                 maxlength: 20
             },
             LastName: {
-                minlength: 2,
+                minlength: 3,
                 maxlength: 20
             },
             companyName: {
@@ -113,11 +116,11 @@ $(document).ready(function(){
                 number: true
             },
             address1Billing: {
-                minlength: 2,
+                minlength: 5,
                 maxlength: 20
             },
             cityBilling: {
-                minlength: 2,
+                minlength: 3,
                 maxlength: 20
             },
             postalCodeBilling: {
@@ -132,6 +135,7 @@ $(document).ready(function(){
         },
         errorElement: "div",
         submitHandler: function(form) {
+            // adding required fields logic after click on submit button
             $("#corporateEmail").rules("add", {
                 required: true,
                 messages: {
@@ -195,6 +199,13 @@ $(document).ready(function(){
                     required: "Postal Code is required"
                 }
             });
+
+            // required logic for state field will be applied
+            // only if state relates not to US
+            // in this case there is required text field on the page
+            // if coutry is US
+            // state is filled by default, there will be no possibility
+            // to make it empty
             if(!($("#state").parent().is(":visible"))){
                 $("#state").rules("add", {
                     required: true,
@@ -202,15 +213,18 @@ $(document).ready(function(){
                         required: "State is required"
                     }
                 });
-            }else{
+            } else {
                 $("#state").rules("add", {
                     required: false
                 });
             }
             if ($("#enterprise").valid()){
+                // here validation from backend should be applied
                 $("#errormessages").removeClass('hidden');
                 form.submit();
             } else {
+                // here added behaviors for temporary removal of 'required' errors
+                // this should be done after click on related field
                 $('html, body').animate({
                     scrollTop: $(".error:first").offset().top + (-40)
                 }, 100);
