@@ -17,7 +17,7 @@ $(document).ready(function(){
         $("#spinnerPay").css('display', 'none');
         $("#spinnerBill").css('display', 'none');
         $("#spinnerCurr").css('display', 'none');
-    }, 2000)
+    }, 3000)
     // phone description logic
     $('.desc-link').click(function(){
         var $this = $(this);
@@ -35,10 +35,20 @@ $(document).ready(function(){
     });
     $('.desc-remove').click(function(){
         var $this = $(this);
+        // phone
         $this.parent().addClass('hidden');
-        $('.desc-remove').addClass('hidden');
-        $('.addPhone1').removeClass('hidden');
+        var case1 = $('.phone').hasClass('hidden');
+        var case2 = $('.phone1').hasClass('hidden');
+        var case3 = $('.phone2').hasClass('hidden');
+        if (!(case1 && case2) || !(case2 && case3) || !(case1 && case3)) {
+            $(".addPhone").removeClass('hidden');
+        }
+        if ((case1 && case2) || (case2 && case3) || (case1 && case3)) {
+            $(".desc-remove").addClass('hidden');
+        }
+        
     });
+
 
     //$(".spinner-container").css("display", "block");
     // here is logic to add another block of fields
@@ -84,12 +94,38 @@ $(document).ready(function(){
     });
 
     // showing additional phone number in case it is needed
-    $('.addPhone1').click(function(e){
+    $('.addPhone').click(function(e){
         e.preventDefault();
         var $this = $(this);
-        $(this).addClass('hidden');
-        $(this).next().removeClass('hidden');
-        $('.desc-remove').removeClass('hidden');
+        var case1 = $('.phone').hasClass('hidden');
+        var case2 = $('.phone1').hasClass('hidden');
+        var case3 = $('.phone2').hasClass('hidden');
+        if (case1 && case2) {
+            $('.phone').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
+            $this.removeClass('hidden');
+        } else if (case2 && case3) {
+            $('.phone1').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
+            $this.removeClass('hidden');
+        } else if (case1 && case3)  {
+            $('.phone').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
+            $this.removeClass('hidden');
+        } else if (case1) {
+            $('.phone').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
+            $this.removeClass('hidden');
+        } else if (case2) {
+            $('.phone1').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
+            $this.removeClass('hidden');
+        } else {
+            $('.phone2').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
+            $this.addClass('hidden');
+        }
+        
     });
 
     // autocomplete countries and states
@@ -130,8 +166,8 @@ $(document).ready(function(){
         onfocusout: function(element) {
             this.element(element);
         },
-        focusCleanup: true,
-        onkeyup: false,
+        //focusCleanup: true,
+        //onkeyup: false,
         rules: {
             corporateEmail: {
                 email: true
@@ -191,7 +227,7 @@ $(document).ready(function(){
         },
         errorElement: "div",
         submitHandler: function(form, event) {
-            event.preventDefault();
+            event.preventDefault(event);
             $("#enterprise :input").prop("disabled", true);
             $("#enterprise :checkbox").prop("disabled", true);
             $("#createSpin").css("display", "block");
@@ -219,12 +255,6 @@ $(document).ready(function(){
                     required: true,
                     messages: {
                         required: "Last name field is required"
-                    }
-                });
-                $("#companyName").rules("add", {
-                    required: true,
-                    messages: {
-                        required: "Company name field is required"
                     }
                 });
                 $("#billCycle").rules("add", {
@@ -303,15 +333,11 @@ $(document).ready(function(){
                     $('html, body').animate({
                         scrollTop: $(".error:first").offset().top + (-40)
                     }, 100);
-                    $('#corporateEmail').on('focusout', function(){
-                        if (($('#corporateEmail').val())){
-                            $("#corporateEmail").rules("add", {
-                                required: false,
-                                focusCleanup: false,
-                                onkeyup: true
-                            });
-                        }
-                    });
+                    /*$('#corporateEmail').on('focus', function(){
+                        $("#corporateEmail").rules("add", {
+                            required: false
+                        });
+                    });*/
                     $('#firstName').on('focus', function(){
                         $("#firstName").rules("add", {
                             required: false
@@ -319,11 +345,6 @@ $(document).ready(function(){
                     });
                     $('#LastName').on('focus', function(){
                         $("#LastName").rules("add", {
-                            required: false
-                        });
-                    });
-                    $('#companyName').on('focus', function(){
-                        $("#companyName").rules("add", {
                             required: false
                         });
                     });

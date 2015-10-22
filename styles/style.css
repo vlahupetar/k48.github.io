@@ -184,13 +184,13 @@ input.error, input.error:focus, select.error, select.error:focus {
     content: url(assets/image.jpg);
     padding-left: 2px;
 }
-.addPhone1 {
+.addPhone {
     font-weight: 700;
     margin-top: 10px;
     display: inline-block;
     text-decoration: none;
 }
-.addPhone1:hover, .addPhone1:visited, .addPhone1:focus {
+.addPhone:hover, .addPhone:visited, .addPhone:focus {
     text-decoration: none;
 }
 
@@ -415,6 +415,9 @@ input.error, input.error:focus, select.error, select.error:focus {
     opacity: 1;
 }
 
+.phone-desc-del, .phone-desc-add, .desc-remove {
+    opacity: 0.5;
+}
 .phone-desc-del, .phone-desc-add, .desc-remove {
     opacity: 0.5;
 }
