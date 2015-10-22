@@ -23,7 +23,7 @@
     </head>
     <body>
         <!-- Account page -->
-        <nav class="navbar container-fluid">
+        <nav class="navbar container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -51,7 +51,7 @@
             </div><!-- /.navbar-collapse -->
         </nav>
 
-        <div class="container-fluid" id="accountDetails">
+        <div class="container" id="accountDetails">
             <aside id="nav-container" class="visible-lg">
                 <ul id="nav">
                     <li class="dropdown active">
@@ -96,18 +96,21 @@
                                     <label for="companyName" class="required">Company Name</label>
                                     <input type="text" class="form-control" id="companyName" name="companyName">
                                     <label for="corporateEmail" class="required">Email</label>
-                                    <input type="email" class="form-control" id="corporateEmail" name="corporateEmail"> 
-                                    <label for="corporatePhone">Phone</label>
-                                    <input type="text" class="form-control" id="corporatePhone">
-                                    <div class="row">
-                                        <br>
-                                        <div class="col-md-12">
-                                            <a href="#" class="addNumber">+ Add number</a>
-                                        </div>
-                                        <div class="col-md-12 hidden">
-                                            <label for="additionalCorporatePhone">Additional Phone Number</label>
-                                            <input type="text" class="form-control" id="additionalCorporatePhone">
-                                        </div>
+                                    <input type="email" class="form-control" id="corporateEmail" name="corporateEmail">
+                                    <div class="phone-container">
+                                        <label for="corporatePhone">Phone</label>
+                                        <span class="desc-remove hidden"></span>
+                                        <input type="text" class="form-control" id="corporatePhone">
+                                        <span class="desc-link phone-desc-add"></span>
+                                        <textarea class="form-control hidden"></textarea>
+                                    </div>
+                                    <a href="#" class="addPhone1">+ Add number</a>
+                                    <div class="phone-container hidden">
+                                        <label for="additionalCorporatePhone">Phone 2</label>
+                                        <span class="desc-remove"></span>
+                                        <input type="text" class="form-control" id="additionalCorporatePhone">
+                                        <span class="desc-link phone-desc-add"></span>
+                                        <textarea class="form-control hidden"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -125,12 +128,27 @@
                                                 <option value="SomeTestData">Some test data</option>
                                             </select>
                                         </div>
+                                        
                                         <div class="col-md-4">
                                             <label for="currency" class="required">Currency</label>
                                             <select id="currency" class="form-control" name="currency">
                                                 <option value="USD">USD</option>
                                                 <option value="EU">EU</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="spinner-container common-select" id="spinnerBill">
+                                        <div class="spinner">
+                                            <svg height="1em" width="1em">
+                                                <circle r="0.45em" cy="0.5em" cx="0.5em">
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="spinner-container common-select" id="spinnerCurr">
+                                        <div class="spinner">
+                                            <svg height="1em" width="1em">
+                                                <circle r="0.45em" cy="0.5em" cx="0.5em">
+                                            </svg>
                                         </div>
                                     </div>
                                     <label for="invoiceType" class="required">Invoice type</label>
@@ -143,11 +161,25 @@
                                         <option value="">Please select</option>
                                         <option value="SomeTestData">Some test data</option>
                                     </select>
+                                    <div class="spinner-container common-select" id="spinnerAcc">
+                                        <div class="spinner">
+                                            <svg height="1em" width="1em">
+                                                <circle r="0.45em" cy="0.5em" cx="0.5em">
+                                            </svg>
+                                        </div>
+                                    </div>
                                     <label for="paymentTerm">Payment Term</label>
                                     <select id="paymentTerm" class="form-control">
                                         <option>Please select</option>
                                         <option>Some test data</option>
                                     </select>
+                                    <div class="spinner-container common-select" id="spinnerPay">
+                                        <div class="spinner">
+                                            <svg height="1em" width="1em">
+                                                <circle r="0.45em" cy="0.5em" cx="0.5em">
+                                            </svg>
+                                        </div>
+                                    </div>
                                     <label>
                                         <input type="checkbox"> Tax Exempt
                                     </label>
@@ -382,7 +414,7 @@
                         <div class="row form-group">
                             <div class="col-md-4 col-xs-4 submitForm">
                                 <button type="submit" class="btn btn-primary btn-lg" id="submitTheForm">Create Account</button>
-                                <div class="spinner-container">
+                                <div class="spinner-container" id="createSpin">
                                     <div class="spinner">
                                         <svg height="1em" width="1em">
                                             <circle r="0.45em" cy="0.5em" cx="0.5em">
