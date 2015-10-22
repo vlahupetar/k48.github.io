@@ -1,5 +1,46 @@
 $(document).ready(function(){
     // enterprise form
+    $("#billCycle").prop("disabled", true);
+    $("#currency").prop("disabled", true);
+    $("#accountCategory").prop("disabled", true);
+    $("#paymentTerm").prop("disabled", true);
+    $("#spinnerAcc").css('display', 'block');
+    $("#spinnerPay").css('display', 'block');
+    $("#spinnerBill").css('display', 'block');
+    $("#spinnerCurr").css('display', 'block');
+    setTimeout(function(){
+        $("#billCycle").prop("disabled", false);
+        $("#currency").prop("disabled", false);
+        $("#accountCategory").prop("disabled", false);
+        $("#paymentTerm").prop("disabled", false);
+        $("#spinnerAcc").css('display', 'none');
+        $("#spinnerPay").css('display', 'none');
+        $("#spinnerBill").css('display', 'none');
+        $("#spinnerCurr").css('display', 'none');
+    }, 2000)
+    // phone description logic
+    $('.desc-link').click(function(){
+        var $this = $(this);
+        var imageUrlCommon = "assets/add_comment.png";
+        var imageUrlRemove = "assets/del_comment.png";
+        if ($this.hasClass('phone-desc-add')) {
+            $this.removeClass('phone-desc-add');
+            $this.addClass('phone-desc-del');
+            $this.next().removeClass('hidden');
+        } else {
+            $this.addClass('phone-desc-add');
+            $this.removeClass('phone-desc-del');
+            $this.next().addClass('hidden');
+        }
+    });
+    $('.desc-remove').click(function(){
+        var $this = $(this);
+        $this.parent().addClass('hidden');
+        $('.desc-remove').addClass('hidden');
+        $('.addPhone1').removeClass('hidden');
+    });
+
+    //$(".spinner-container").css("display", "block");
     // here is logic to add another block of fields
     // if user wants to add more than one address
     // also he can check 'same as billing' checkbox
@@ -43,12 +84,12 @@ $(document).ready(function(){
     });
 
     // showing additional phone number in case it is needed
-    $('.addNumber').click(function(e){
+    $('.addPhone1').click(function(e){
         e.preventDefault();
         var $this = $(this);
-        $(this).parent().next().removeClass('hidden');
-        $(this).parent().addClass('hidden');
-        $(this).parent().prev().remove();
+        $(this).addClass('hidden');
+        $(this).next().removeClass('hidden');
+        $('.desc-remove').removeClass('hidden');
     });
 
     // autocomplete countries and states
@@ -56,7 +97,6 @@ $(document).ready(function(){
 
     // temp remove of selection arrow
     // it doesn't match to default browser styles
-    $(".select2-selection__arrow").remove();
 
     // select countries and states for USA
     $('#countriesBilling').on('change', function(){
@@ -154,14 +194,14 @@ $(document).ready(function(){
             event.preventDefault();
             $("#enterprise :input").prop("disabled", true);
             $("#enterprise :checkbox").prop("disabled", true);
-            $(".spinner-container").css("display", "block");
+            $("#createSpin").css("display", "block");
             $("body").css("opacity", "0.7");
             
             setTimeout(function(){
             // adding required fields logic after click on submit button
                 $("#enterprise :input").prop("disabled", false);
                 $("#enterprise :checkbox").prop("disabled", false);
-                $(".spinner-container").css("display", "none");
+                $("#createSpin").css("display", "none");
                 $("body").css("opacity", "1");
                 $("#corporateEmail").rules("add", {
                     required: true,
@@ -263,10 +303,14 @@ $(document).ready(function(){
                     $('html, body').animate({
                         scrollTop: $(".error:first").offset().top + (-40)
                     }, 100);
-                    $('#corporateEmail').on('focus', function(){
-                        $("#corporateEmail").rules("add", {
-                            required: false
-                        });
+                    $('#corporateEmail').on('focusout', function(){
+                        if (($('#corporateEmail').val())){
+                            $("#corporateEmail").rules("add", {
+                                required: false,
+                                focusCleanup: false,
+                                onkeyup: true
+                            });
+                        }
                     });
                     $('#firstName').on('focus', function(){
                         $("#firstName").rules("add", {

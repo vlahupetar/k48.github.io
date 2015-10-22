@@ -33,7 +33,7 @@ header .row h6 strong, label strong {
     color: #444;
 }
 
-.container-fluid {
+.container {
     background-color: #fff;
     position: relative;
 }
@@ -90,7 +90,7 @@ header .row h6 strong, label strong {
 
 .submitForm {
     display: block;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 .row.header .nav-tabs {
@@ -184,12 +184,13 @@ input.error, input.error:focus, select.error, select.error:focus {
     content: url(assets/image.jpg);
     padding-left: 2px;
 }
-.addNumber {
+.addPhone1 {
     font-weight: 700;
     margin-top: 10px;
     display: inline-block;
+    text-decoration: none;
 }
-.addNumber:hover {
+.addPhone1:hover, .addPhone1:visited, .addPhone1:focus {
     text-decoration: none;
 }
 
@@ -201,8 +202,8 @@ input.error, input.error:focus, select.error, select.error:focus {
     left: 0;
     margin: auto;
     position: absolute;
-    right: 147px;
-    top: 20px;
+    right: 96px;
+    top: 39px;
     width: 40px;
     z-index: 1001;
     display: none;
@@ -340,4 +341,80 @@ input.error, input.error:focus, select.error, select.error:focus {
 .navbar .nav li.active a:hover {
     color: #3d77f9;
     background-color: #eee;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 31px;
+}
+.common-select {
+    height: 0;
+    width: 0;
+    position: relative;
+}
+.common-select .spinner {
+    font-size: 3rem;
+}
+.common-select .spinner circle {
+    stroke: #3d77f9;
+}
+#spinnerAcc {
+    left: -13px;
+    top: -32px;
+}
+#spinnerPay {
+    left: -13px;
+    top: -32px;
+}
+#spinnerBill{
+    top: -32px;
+    left: -66px;
+}
+#spinnerCurr{
+    top: -32px;
+    left: 95px;
+}
+.phone-container {
+    position: relative;
+}
+.desc-link {
+    position: absolute;
+    width: 14px;
+    height: 15px;
+    right: -22px;
+    top: 51px;
+    cursor: pointer;
+}
+
+.phone-container textarea {
+    resize: none;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.phone-desc-add {
+    background-image: url('../assets/add_comment.png');
+}
+
+.phone-desc-del {
+    background-image: url('../assets/del_comment.png');
+    right: -25px;
+    width: 17px;
+    opacity: 0.5;
+}
+
+.desc-remove {
+    background-image: url('../assets/delete_phone.png');
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    left: -27px;
+    top: 47px;
+    cursor: pointer;
+}
+
+.phone-desc-del:hover, .phone-desc-add:hover, .desc-remove:hover {
+    opacity: 1;
+}
+
+.phone-desc-del, .phone-desc-add, .desc-remove {
+    opacity: 0.5;
 }
