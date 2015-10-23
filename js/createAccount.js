@@ -241,6 +241,7 @@ $(document).ready(function(){
                 $("body").css("opacity", "1");
                 $("#corporateEmail").rules("add", {
                     required: true,
+                    email: false,
                     messages: {
                         required: "Email is required"
                     }
@@ -333,11 +334,17 @@ $(document).ready(function(){
                     $('html, body').animate({
                         scrollTop: $(".error:first").offset().top + (-40)
                     }, 100);
-                    /*$('#corporateEmail').on('focus', function(){
+                    $('#corporateEmail').on('focusout', function(){
                         $("#corporateEmail").rules("add", {
-                            required: false
+                            required: false,
+                            email: true
                         });
-                    });*/
+                    });
+                    $('#corporateEmail').on('focus', function(){
+                        $("#corporateEmail").rules("add", {
+                            email: false
+                        });
+                    });
                     $('#firstName').on('focus', function(){
                         $("#firstName").rules("add", {
                             required: false
