@@ -366,11 +366,11 @@ input.error, input.error:focus, select.error, select.error:focus {
 }
 #spinnerBill{
     top: -32px;
-    left: -66px;
+    left: -124px;
 }
 #spinnerCurr{
     top: -32px;
-    left: 95px;
+    left: 42px;
 }
 .phone-container {
     position: relative;

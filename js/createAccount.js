@@ -9,7 +9,6 @@ $(document).ready(function(){
     $("#spinnerBill").css('display', 'block');
     $("#spinnerCurr").css('display', 'block');
     setTimeout(function(){
-        $("#billCycle").prop("disabled", false);
         $("#currency").prop("disabled", false);
         $("#accountCategory").prop("disabled", false);
         $("#paymentTerm").prop("disabled", false);
@@ -93,6 +92,15 @@ $(document).ready(function(){
         }
     });
 
+    $('#showBilling').click(function(){
+        var $this = $(this);
+        if ($this.is(':checked')) {
+            $('#BillingAdd').removeClass('hidden');
+        } else {
+            $('#BillingAdd').addClass('hidden');
+        }
+    });
+
     // showing additional phone number in case it is needed
     $('.addPhone').click(function(e){
         e.preventDefault();
@@ -160,6 +168,27 @@ $(document).ready(function(){
         } else {
             $('#stateShippingOthers').parent().addClass('hidden');
             $('#statesUSShipping').parent().removeClass('hidden');
+        }
+    });
+    // Bill Cycle changes depending on currency selected value
+    $('#currency').on('change', function(){
+        if ($("#currency").val() === 'USD') {
+            $('#billCycle').prop('disabled', false);
+            $('#billCycle').val('SomeTestDataUSD');
+        } else if ($("#currency").val() === 'EU') {
+            $('#billCycle').val('SomeTestDataEU');
+            $('#billCycle').prop('disabled', false);
+        } else {
+            $('#billCycle').val('');
+            $('#billCycle').prop('disabled', true);
+        }
+    });
+    // currency changes depending on bill cycle selected value
+    $('#billCycle').on('change', function(){
+        if ($("#billCycle").val() === 'SomeTestDataUSD') {
+            $('#currency').val('USD');
+        } else {
+            $('#currency').val('EU');
         }
     });
     $("#enterprise").validate({
