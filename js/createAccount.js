@@ -1,9 +1,9 @@
 $(document).ready(function(){
     // enterprise form
-    $("#billCycle").prop("disabled", true);
     $("#currency").prop("disabled", true);
     $("#accountCategory").prop("disabled", true);
     $("#paymentTerm").prop("disabled", true);
+    $("#billCycle").prop("disabled", true);
     $("#spinnerAcc").css('display', 'block');
     $("#spinnerPay").css('display', 'block');
     $("#spinnerBill").css('display', 'block');
@@ -12,38 +12,33 @@ $(document).ready(function(){
         $("#currency").prop("disabled", false);
         $("#accountCategory").prop("disabled", false);
         $("#paymentTerm").prop("disabled", false);
+        $("#billCycle").prop("disabled", false);
         $("#spinnerAcc").css('display', 'none');
         $("#spinnerPay").css('display', 'none');
         $("#spinnerBill").css('display', 'none');
         $("#spinnerCurr").css('display', 'none');
     }, 3000)
     // phone description logic
-    $('.desc-link').click(function(){
-        var $this = $(this);
-        var imageUrlCommon = "assets/add_comment.png";
-        var imageUrlRemove = "assets/del_comment.png";
-        if ($this.hasClass('phone-desc-add')) {
-            $this.removeClass('phone-desc-add');
-            $this.addClass('phone-desc-del');
-            $this.next().removeClass('hidden');
-        } else {
-            $this.addClass('phone-desc-add');
-            $this.removeClass('phone-desc-del');
-            $this.next().addClass('hidden');
-        }
-    });
     $('.desc-remove').click(function(){
         var $this = $(this);
         // phone
-        $this.parent().addClass('hidden');
-        var case1 = $('.phone').hasClass('hidden');
-        var case2 = $('.phone1').hasClass('hidden');
-        var case3 = $('.phone2').hasClass('hidden');
-        if (!(case1 && case2) || !(case2 && case3) || !(case1 && case3)) {
+        $this.parent().parent().parent().addClass('hidden');
+        var case1 = $('.phone1').hasClass('hidden');
+        var case2 = $('.phone2').hasClass('hidden');
+        var case3 = $('.phone3').hasClass('hidden');
+        var case4 = $('.phone4').hasClass('hidden');
+        if (!(case1 && case2 && case3) || !(case2 && case3 && case4) || !(case1 && case3 && case4) || !(case1 && case2 && case4)) {
             $(".addPhone").removeClass('hidden');
         }
-        if ((case1 && case2) || (case2 && case3) || (case1 && case3)) {
+        if ((case1 && case2 && case3) || (case2 && case3 && case4) || (case1 && case3 && case4) || (case1 && case2 && case4)) {
             $(".desc-remove").addClass('hidden');
+        }
+        var appendSelectedPhoneType = $this.next().val();
+        if (appendSelectedPhoneType) {
+            $('.phone-type1').append("<option value='"+appendSelectedPhoneType+"'>"+appendSelectedPhoneType+"</option>");
+            $('.phone-type2').append("<option value='"+appendSelectedPhoneType+"'>"+appendSelectedPhoneType+"</option>");
+            $('.phone-type3').append("<option value='"+appendSelectedPhoneType+"'>"+appendSelectedPhoneType+"</option>");
+            $('.phone-type4').append("<option value='"+appendSelectedPhoneType+"'>"+appendSelectedPhoneType+"</option>");
         }
         
     });
@@ -105,37 +100,64 @@ $(document).ready(function(){
     $('.addPhone').click(function(e){
         e.preventDefault();
         var $this = $(this);
-        var case1 = $('.phone').hasClass('hidden');
-        var case2 = $('.phone1').hasClass('hidden');
-        var case3 = $('.phone2').hasClass('hidden');
-        if (case1 && case2) {
-            $('.phone').removeClass('hidden');
-            $('.desc-remove').removeClass('hidden');
-            $this.removeClass('hidden');
-        } else if (case2 && case3) {
-            $('.phone1').removeClass('hidden');
-            $('.desc-remove').removeClass('hidden');
-            $this.removeClass('hidden');
-        } else if (case1 && case3)  {
-            $('.phone').removeClass('hidden');
-            $('.desc-remove').removeClass('hidden');
-            $this.removeClass('hidden');
-        } else if (case1) {
-            $('.phone').removeClass('hidden');
-            $('.desc-remove').removeClass('hidden');
-            $this.removeClass('hidden');
-        } else if (case2) {
-            $('.phone1').removeClass('hidden');
-            $('.desc-remove').removeClass('hidden');
-            $this.removeClass('hidden');
-        } else {
+        var case1 = $('.phone1').hasClass('hidden');
+        var case2 = $('.phone2').hasClass('hidden');
+        var case3 = $('.phone3').hasClass('hidden');
+        var case4 = $('.phone4').hasClass('hidden');
+        
+        if ((case2 && case3) || (case2 && case4) || (case2 && !case1 && !case3 && !case4)) {
             $('.phone2').removeClass('hidden');
             $('.desc-remove').removeClass('hidden');
+        } else if (case3 && (!case1 && !case2)) {
+            $('.phone3').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
+        } else if (!case1 && !case2 && !case3) {
+            $('.phone4').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
             $this.addClass('hidden');
+        } else {
+            $('.phone1').removeClass('hidden');
+            $('.desc-remove').removeClass('hidden');
         }
         
     });
 
+    $('.phone-type1').on('change', function(){
+        var $this = $(this);
+        var selected = $this.val();
+        if($this.val()) {
+            $(".phone-type2 option[value='"+selected+"']").remove();
+            $(".phone-type3 option[value='"+selected+"']").remove();
+            $(".phone-type4 option[value='"+selected+"']").remove();
+        }
+    });
+    $('.phone-type2').on('change', function(){
+        var $this = $(this);
+        var selected = $this.val();
+        if($this.val()) {
+            $(".phone-type1 option[value='"+selected+"']").remove();
+            $(".phone-type3 option[value='"+selected+"']").remove();
+            $(".phone-type4 option[value='"+selected+"']").remove();
+        }
+    });
+    $('.phone-type3').on('change', function(){
+        var $this = $(this);
+        var selected = $this.val();
+        if($this.val()) {
+            $(".phone-type1 option[value='"+selected+"']").remove();
+            $(".phone-type2 option[value='"+selected+"']").remove();
+            $(".phone-type4 option[value='"+selected+"']").remove();
+        }
+    });
+    $('.phone-type4').on('change', function(){
+        var $this = $(this);
+        var selected = $this.val();
+        if($this.val()) {
+            $(".phone-type1 option[value='"+selected+"']").remove();
+            $(".phone-type2 option[value='"+selected+"']").remove();
+            $(".phone-type3 option[value='"+selected+"']").remove();
+        }
+    });
     // autocomplete countries and states
     $(".js-example-basic-single").select2();
 
@@ -147,9 +169,15 @@ $(document).ready(function(){
         if ($("#select2-countriesBilling-container").text() !== 'United States') {
             $('#state').parent().removeClass('hidden');
             $('#statesUS').parent().addClass('hidden');
+            $("#postalCodeBilling").rules("add", {
+                number: false
+            });
         } else {
             $('#state').parent().addClass('hidden');
             $('#statesUS').parent().removeClass('hidden');
+            $("#postalCodeBilling").rules("add", {
+                number: true
+            });
         }
     });
     $('#countriesService').on('change', function(){
@@ -173,22 +201,20 @@ $(document).ready(function(){
     // Bill Cycle changes depending on currency selected value
     $('#currency').on('change', function(){
         if ($("#currency").val() === 'USD') {
-            $('#billCycle').prop('disabled', false);
-            $('#billCycle').val('SomeTestDataUSD');
+            $("#billCycle option").each(function() {
+                $(this).remove();
+            });
+            $('#billCycle').append("<option value='USD'>Test Data For USD</option>");
         } else if ($("#currency").val() === 'EU') {
-            $('#billCycle').val('SomeTestDataEU');
-            $('#billCycle').prop('disabled', false);
+            $("#billCycle option").each(function() {
+                $(this).remove();
+            });
+            $('#billCycle').append("<option value='EU'>Test Data For EU</option>");
         } else {
-            $('#billCycle').val('');
-            $('#billCycle').prop('disabled', true);
-        }
-    });
-    // currency changes depending on bill cycle selected value
-    $('#billCycle').on('change', function(){
-        if ($("#billCycle").val() === 'SomeTestDataUSD') {
-            $('#currency').val('USD');
-        } else {
-            $('#currency').val('EU');
+            $("#billCycle option").each(function() {
+                $(this).remove();
+                $('#billCycle').append("<option value=''></option>");
+            });
         }
     });
     $("#enterprise").validate({
@@ -270,11 +296,19 @@ $(document).ready(function(){
                 $("body").css("opacity", "1");
                 $("#corporateEmail").rules("add", {
                     required: true,
-                    email: false,
                     messages: {
                         required: "Email is required"
                     }
                 });
+                /*if ($("#select2-countriesBilling-container").val() !== 'United States') {
+                    $("#postalCodeBilling").rules("add", {
+                        number: false
+                    });
+                } else {
+                    $("#postalCodeBilling").rules("add", {
+                        number: true
+                    });
+                }*/
                 $("#firstName").rules("add", {
                     required: true,
                     messages: {
@@ -323,6 +357,12 @@ $(document).ready(function(){
                         required: "Postal Code is required"
                     }
                 });
+                $("#currency").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Currency is required"
+                    }
+                });
                 // we should also add/remove some validation for additional address fields
                 // in cases it is showing or not
                 /*if($("#showShippingEnterprise").is(":checked") && !($("#sameShippingEnterprise").is(":checked"))) {
@@ -355,7 +395,6 @@ $(document).ready(function(){
                     $('html, body').animate({
                         scrollTop: $("#errormessages").offset().top + (-40)
                     }, 100);
-                    
                     //form.submit();
                 } else {
                     // here added behaviors for temporary removal of 'required' errors
@@ -363,15 +402,9 @@ $(document).ready(function(){
                     $('html, body').animate({
                         scrollTop: $(".error:first").offset().top + (-40)
                     }, 100);
-                    $('#corporateEmail').on('focusout', function(){
-                        $("#corporateEmail").rules("add", {
-                            required: false,
-                            email: true
-                        });
-                    });
                     $('#corporateEmail').on('focus', function(){
                         $("#corporateEmail").rules("add", {
-                            email: false
+                            required: false
                         });
                     });
                     $('#firstName').on('focus', function(){
@@ -381,11 +414,6 @@ $(document).ready(function(){
                     });
                     $('#LastName').on('focus', function(){
                         $("#LastName").rules("add", {
-                            required: false
-                        });
-                    });
-                    $('#billCycle').on('focus', function(){
-                        $("#billCycle").rules("add", {
                             required: false
                         });
                     });
@@ -418,6 +446,15 @@ $(document).ready(function(){
                         $("#state").rules("add", {
                             required: false
                         });
+                    });
+                    $('#currency').on('focus', function(){
+                        $("#currency").rules("add", {
+                            required: false
+                        });
+                        $("#billCycle").rules("add", {
+                            required: false
+                        });
+                        $("#billCycle").click();
                     });
                 }
             }, 3000)

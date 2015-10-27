@@ -96,28 +96,90 @@
                                     <input type="text" class="form-control" id="companyName" name="companyName">
                                     <label for="corporateEmail" class="required">Email</label>
                                     <input type="email" class="form-control" id="corporateEmail" name="corporateEmail">
-                                    <div class="phone-container phone">
-                                        <label for="corporatePhone">Phone</label>
-                                        <span class="desc-remove hidden"></span>
-                                        <input type="text" class="form-control" id="corporatePhone">
-                                        <span class="desc-link phone-desc-add"></span>
-                                        <textarea class="form-control hidden"></textarea>
+                                    <div class="phone1">
+                                        <label for="corporatePhone">Phone 1</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span class="desc-remove hidden"></span>
+                                                <select class="form-control phone-type1">
+                                                    <option value="">Phone Type</option>
+                                                    <option value="Office">Office</option>
+                                                    <option value="Home">Home</option>
+                                                    <option value="Fax">Fax</option>
+                                                    <option value="Mobile">Mobile</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 phone-container phone">
+                                                <input type="text" class="form-control" id="phone1">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="phone-container hidden phone1">
-                                        <label for="additionalCorporatePhone">Phone 2</label>
-                                        <span class="desc-remove"></span>
-                                        <input type="text" class="form-control" id="additionalCorporatePhone">
-                                        <span class="desc-link phone-desc-add"></span>
-                                        <textarea class="form-control hidden"></textarea>
+                                    <div class="hidden phone2">
+                                        <label for="corporatePhone">Phone 2</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span class="desc-remove hidden"></span>
+                                                <select class="form-control phone-type2">
+                                                    <option value="">Phone Type</option>
+                                                    <option value="Office">Office</option>
+                                                    <option value="Home">Home</option>
+                                                    <option value="Fax">Fax</option>
+                                                    <option value="Mobile">Mobile</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 phone-container phone">
+                                                <input type="text" class="form-control" id="phone2">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="phone-container hidden phone2">
-                                        <label for="additionalCorporatePhone2">Phone 3</label>
-                                        <span class="desc-remove"></span>
-                                        <input type="text" class="form-control" id="additionalCorporatePhone2">
-                                        <span class="desc-link phone-desc-add"></span>
-                                        <textarea class="form-control hidden"></textarea>
+                                    <div class="hidden phone3">
+                                        <label for="corporatePhone">Phone 3</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span class="desc-remove hidden"></span>
+                                                <select class="form-control phone-type3">
+                                                    <option value="">Phone Type</option>
+                                                    <option value="Office">Office</option>
+                                                    <option value="Home">Home</option>
+                                                    <option value="Fax">Fax</option>
+                                                    <option value="Mobile">Mobile</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 phone-container phone">
+                                                <input type="text" class="form-control" id="phone3">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <a href="#" class="addPhone">+ Add Number</a>
+                                    <div class="hidden phone4">
+                                        <label for="corporatePhone">Phone 4</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span class="desc-remove hidden"></span>
+                                                <select class="form-control phone-type4">
+                                                    <option value="">Phone Type</option>
+                                                    <option value="Office">Office</option>
+                                                    <option value="Home">Home</option>
+                                                    <option value="Fax">Fax</option>
+                                                    <option value="Mobile">Mobile</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 phone-container phone">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <a href="#" class="addPhone">+ Add Number</a>
+                                    </div>
+                                    <label for="accountSegment">Account Segment</label>
+                                    <select id="accountSegment" class="form-control" name="accountSegment">
+                                        <option value="">Please Select</option>
+                                        <option value="SomeTestData">Some Test Data</option>
+                                    </select>
+                                    <label for="parentAccount">Parent Account</label>
+                                    <input type="text" class="form-control typeahead" id="parentAccount" name="parentAccount">
+                                    <label for="ExternalAccountID">External Account ID</label>
+                                    <input type="text" class="form-control" id="ExternalAccountID" name="ExternalAccountID">
                                     <div class="row form-group">
                                         <!-- Custom fiedls -->
                                         <div class="col-md-12">
@@ -144,9 +206,7 @@
                                         <div class="col-md-8">
                                             <label for="billCycle" class="required">Bill Cycle</label>
                                             <select id="billCycle" class="form-control" name="billCycle">
-                                                <option value="">Please Select</option>
-                                                <option value="SomeTestDataUSD">Test Data For USD</option>
-                                                <option value="SomeTestDataEU">Test Data For EU</option>
+                                                <option value=""></option>
                                             </select>
                                         </div>
                                     </div>
@@ -195,9 +255,20 @@
                                     </div>
                                     <label for="tax">Tax Number ( SSN / EIN )</label>
                                     <input type="text" class="form-control" id="tax" name="tax">
-                                    <label>
-                                        <input type="checkbox"> Tax Exempt
-                                    </label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="taxExempt">
+                                                <input type="checkbox" id="taxExempt"> Tax Exempt
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="autoPayment">
+                                                <input type="checkbox" id="autoPayment"> Authorize Auto-Payment
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -417,9 +488,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row form-group">
-                            <div class="col-md-4 col-xs-4 submitForm">
-                                <button type="submit" class="btn btn-primary btn-lg" id="submitTheForm">Create Account</button>
+                        <div class="row form-group submitForm">
+                            <div class="col-md-4 col-md-offset-8 col-xs-4">
+                                <button type="submit" class="btn btn-primary btn-lg pull-right" id="submitTheForm">Create Account</button>
                                 <div class="spinner-container" id="createSpin">
                                     <div class="spinner">
                                         <svg height="1em" width="1em">
@@ -427,6 +498,7 @@
                                         </svg>
                                     </div>
                                 </div>
+                                <button type="button" class="btn btn-default btn-lg pull-right">Cancel</button>
                             </div>
                         </div>    
                     </form>
@@ -438,6 +510,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
+        <script src="js/typeahead.bundle.min.js"></script>
         <script src="js/createAccount.js"></script>
+        <script src="js/parentAcc.js"></script>
     </body>
 </html>
