@@ -65,7 +65,7 @@
             <header>
                 <div class="row">
                     <div class="col-lg-5 col-md-4 col-sm-6 col-xs-7">
-                        <h4>Create new account</h4>
+                        <h4>Create New Account</h4>
                     </div>
                     <div class="col-lg-4 col-lg-offset-3 col-md-2 col-md-offset-6 col-sm-2 col-sm-offset-4 col-xs-5">
                         <h6 class="text-right"><strong class="text-danger">&#42;</strong> Required</h6>
@@ -87,7 +87,6 @@
                         <div class="row form-group">
                             <!-- Corporate -->
                             <div class="col-md-6">
-                                <h5>Corporate</h5>
                                 <div class="wrapper">
                                     <label for="firstName" class="required">First Name</label>
                                     <input type="text" class="form-control" id="firstName" name="firstName">
@@ -118,29 +117,36 @@
                                         <span class="desc-link phone-desc-add"></span>
                                         <textarea class="form-control hidden"></textarea>
                                     </div>
-                                    <a href="#" class="addPhone">+ Add number</a>
+                                    <a href="#" class="addPhone">+ Add Number</a>
+                                    <div class="row form-group">
+                                        <!-- Custom fiedls -->
+                                        <div class="col-md-12">
+                                            <label for="field1">Field 1</label>
+                                            <input type="text" class="form-control" id="field1" maxlength="100">
+                                            <label for="field2">Field 2</label>
+                                            <input type="text" class="form-control" id="field2" maxlength="100">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Financial -->
                             <div class="col-md-6">
-                                <h5>Financial</h5>
                                 <div class="wrapper">
-                                    <label for="tax">Tax Identification Number</label>
-                                    <input type="text" class="form-control" id="tax" name="tax">
                                     <div class="row">
-                                        <div class="col-md-8">
-                                            <label for="billCycle" class="required">Bill Cycle</label>
-                                            <select id="billCycle" class="form-control" name="billCycle">
-                                                <option value="">Please select</option>
-                                                <option value="SomeTestData">Some test data</option>
-                                            </select>
-                                        </div>
-                                        
                                         <div class="col-md-4">
                                             <label for="currency" class="required">Currency</label>
                                             <select id="currency" class="form-control" name="currency">
+                                                <option value=""></option>
                                                 <option value="USD">USD</option>
                                                 <option value="EU">EU</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label for="billCycle" class="required">Bill Cycle</label>
+                                            <select id="billCycle" class="form-control" name="billCycle">
+                                                <option value="">Please Select</option>
+                                                <option value="SomeTestDataUSD">Test Data For USD</option>
+                                                <option value="SomeTestDataEU">Test Data For EU</option>
                                             </select>
                                         </div>
                                     </div>
@@ -158,15 +164,15 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <label for="invoiceType" class="required">Invoice type</label>
+                                    <label for="invoiceType" class="required">Invoice Type</label>
                                     <select id="invoiceType" class="form-control" name="invoiceType">
-                                        <option value="">Please select</option>
-                                        <option value="SomeTestData">Some test data</option>
+                                        <option value="">Please Select</option>
+                                        <option value="SomeTestData">Some Test Data</option>
                                     </select>
-                                    <label for="accountCategory" class="required">Account category</label>
+                                    <label for="accountCategory" class="required">Account Category</label>
                                     <select id="accountCategory" class="form-control" name="accountCategory">
-                                        <option value="">Please select</option>
-                                        <option value="SomeTestData">Some test data</option>
+                                        <option value="">Please Select</option>
+                                        <option value="SomeTestData">Some Test Data</option>
                                     </select>
                                     <div class="spinner-container common-select" id="spinnerAcc">
                                         <div class="spinner">
@@ -177,8 +183,8 @@
                                     </div>
                                     <label for="paymentTerm">Payment Term</label>
                                     <select id="paymentTerm" class="form-control">
-                                        <option>Please select</option>
-                                        <option>Some test data</option>
+                                        <option>Please Select</option>
+                                        <option>Some Test Data</option>
                                     </select>
                                     <div class="spinner-container common-select" id="spinnerPay">
                                         <div class="spinner">
@@ -187,6 +193,8 @@
                                             </svg>
                                         </div>
                                     </div>
+                                    <label for="tax">Tax Number ( SSN / EIN )</label>
+                                    <input type="text" class="form-control" id="tax" name="tax">
                                     <label>
                                         <input type="checkbox"> Tax Exempt
                                     </label>
@@ -199,64 +207,71 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <!-- Corporate -->
                             <div class="col-md-6">
-                                <h4>Billing Addresses</h4>
                                 <div class="wrapper">
-                                    <label for="countriesBilling" class="required">Country</label>
-                                    <select id="countriesBilling" class="form-control js-example-basic-single countries">
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
-                                        <option value="AS">American Samoa</option>
-                                        <option value="AD">Andorra</option>
-                                        <option value="AO">Angola</option>
-                                        <option value="AI">Anguilla</option>
-                                        <option value="TM">Turkmenistan</option>
-                                        <option value="TC">Turks and Caicos Islands</option>
-                                        <option value="TV">Tuvalu</option>
-                                        <option value="UG">Uganda</option>
-                                        <option value="UA">Ukraine</option>
-                                        <option value="AE">United Arab Emirates</option>
-                                        <option value="GB">United Kingdom</option>
-                                        <option value="US" selected>United States</option>
-                                        <option value="UM">United States Minor Outlying Islands</option>
-                                        <option value="UY">Uruguay</option>
-                                        <option value="UZ">Uzbekistan</option>
-                                        <option value="VU">Vanuatu</option>
-                                    </select>
-                                    <label for="address1Billing" class="required">Address Line 1</label>
-                                    <input type="text" class="form-control" id="address1Billing" name="address1Billing">
-                                    <label for="address2Billing">Address Line 2</label>
-                                    <input type="text" class="form-control" id="address2Billing">
-                                    <label for="cityBilling" class="required">City</label>
-                                    <input type="text" class="form-control" id="cityBilling" name="cityBilling">
                                     <div class="row">
-                                        <div class="col-md-8 hidden">
-                                            <label for="state" class="required">State</label>
-                                            <input type="text" class="form-control" id="state" name="state">
+                                        <div class="col-sm-6 col-xs-12">
+                                            <label class="row">
+                                                <input type="checkbox" checked id="showBilling"> Billing Address
+                                            </label>
                                         </div>
-                                        <div class="col-md-8">
-                                            <label for="statesUS" class="required">State</label>
-                                            <select id="statesUS" class="form-control js-example-basic-single">
-                                                <option value="AL">Alabama</option>
-                                                <option value="AK">Alaska</option>
-                                                <option value="ME">Maine</option>
-                                                <option value="MD">Maryland</option>
-                                                <option value="MO">Missouri</option>
-                                                <option value="MT">Montana</option>
-                                                <option value="NE">Nebraska</option>
-                                                <option value="NV">Nevada</option>
-                                                <option value="NH">New Hampshire</option>
-                                                <option value="NJ">New Jersey</option>
-                                                <option value="NM">New Mexico</option>
-                                                <option value="NY" selected>New York</option>
-                                                <option value="NC">North Carolina</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="postalCodeBilling" class="required">Postal Code</label>
-                                            <input type="text" class="form-control" id="postalCodeBilling" name="postalCodeBilling">
+                                    </div>
+                                    <div id="BillingAdd">
+                                        <label for="countriesBilling" class="required">Country</label>
+                                        <select id="countriesBilling" class="form-control js-example-basic-single countries">
+                                            <option value="AF">Afghanistan</option>
+                                            <option value="AL">Albania</option>
+                                            <option value="DZ">Algeria</option>
+                                            <option value="AS">American Samoa</option>
+                                            <option value="AD">Andorra</option>
+                                            <option value="AO">Angola</option>
+                                            <option value="AI">Anguilla</option>
+                                            <option value="TM">Turkmenistan</option>
+                                            <option value="TC">Turks and Caicos Islands</option>
+                                            <option value="TV">Tuvalu</option>
+                                            <option value="UG">Uganda</option>
+                                            <option value="UA">Ukraine</option>
+                                            <option value="AE">United Arab Emirates</option>
+                                            <option value="GB">United Kingdom</option>
+                                            <option value="US" selected>United States</option>
+                                            <option value="UM">United States Minor Outlying Islands</option>
+                                            <option value="UY">Uruguay</option>
+                                            <option value="UZ">Uzbekistan</option>
+                                            <option value="VU">Vanuatu</option>
+                                        </select>
+                                        <label for="address1Billing" class="required">Address Line 1</label>
+                                        <input type="text" class="form-control" id="address1Billing" name="address1Billing">
+                                        <label for="address2Billing">Address Line 2</label>
+                                        <input type="text" class="form-control" id="address2Billing">
+                                        <label for="cityBilling" class="required">City</label>
+                                        <input type="text" class="form-control" id="cityBilling" name="cityBilling">
+                                        <div class="row">
+                                            <div class="col-md-8 hidden">
+                                                <label for="state" class="required">State</label>
+                                                <input type="text" class="form-control" id="state" name="state">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label for="statesUS" class="required">State</label>
+                                                <select id="statesUS" class="form-control js-example-basic-single">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AK">Alaska</option>
+                                                    <option value="ME">Maine</option>
+                                                    <option value="MD">Maryland</option>
+                                                    <option value="MO">Missouri</option>
+                                                    <option value="MT">Montana</option>
+                                                    <option value="NE">Nebraska</option>
+                                                    <option value="NV">Nevada</option>
+                                                    <option value="NH">New Hampshire</option>
+                                                    <option value="NJ">New Jersey</option>
+                                                    <option value="NM">New Mexico</option>
+                                                    <option value="NY" selected>New York</option>
+                                                    <option value="NC">North Carolina</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="postalCodeBilling" class="required">Postal Code</label>
+                                                <input type="text" class="form-control" id="postalCodeBilling" name="postalCodeBilling">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -399,22 +414,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row header">
-                            <div class="col-md-12 title divider">
-                                <h3><span>Custom fields</span></h3>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <!-- Custom fields -->
-                            <div class="col-md-6">
-                                <div class="wrapper">
-                                    <label for="field1">Field 1</label>
-                                    <input type="text" class="form-control" id="field1" maxlength="100">
-                                    <label for="field2">Field 2</label>
-                                    <input type="text" class="form-control" id="field2" maxlength="100">
                                 </div>
                             </div>
                         </div>
