@@ -221,8 +221,8 @@ $(document).ready(function(){
         onfocusout: function(element) {
             this.element(element);
         },
-        //focusCleanup: true,
-        //onkeyup: false,
+        focusCleanup: true,
+        onkeyup: false,
         rules: {
             corporateEmail: {
                 email: true
