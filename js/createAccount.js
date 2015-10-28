@@ -4,7 +4,6 @@ $(document).ready(function(){
     $("#accountCategory").prop("disabled", true);
     $("#paymentTerm").prop("disabled", true);
     $("#billCycle").prop("disabled", true);
-    $("#tax").prop("disabled", true);
     $("#spinnerAcc").css('display', 'block');
     $("#spinnerPay").css('display', 'block');
     $("#spinnerBill").css('display', 'block');
