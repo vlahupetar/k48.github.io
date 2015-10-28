@@ -83,21 +83,38 @@
                             <h3 class="line text-left"><span>Account details</span></h3>
                         </div>
                     </div>
-                    <form id="enterprise" class="tab-pane active" novalidate="novalidate">
+                    <form id="enterprise" class="tab-pane active" novalidate="novalidate" role="form">
                         <div class="row form-group">
                             <!-- Corporate -->
                             <div class="col-md-6">
                                 <div class="wrapper">
-                                    <label for="firstName" class="required">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName">
-                                    <label for="LastName" class="required">Last Name</label>
-                                    <input type="text" class="form-control" id="LastName" name="LastName">
-                                    <label for="companyName">Company Name</label>
-                                    <input type="text" class="form-control" id="companyName" name="companyName">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">For personal account</legend>
+                                        <label for="firstName" class="required">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName">
+                                        <label for="LastName" class="required">Last Name</label>
+                                        <input type="text" class="form-control" id="LastName" name="LastName">
+                                    </fieldset>
+                                    <fieldset class="the-fieldset margin-0">
+                                        <legend class="the-legend">For enterprise account</legend>
+                                        <label for="companyName" class="required">Company Name</label>
+                                        <input type="text" class="form-control" id="companyName" name="companyName">
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-12 padding-right-0">
+                                            <label for="tax">Tax Number ( SSN / EIN )</label>
+                                            <input type="text" class="form-control" id="tax" name="tax">
+                                        </div>
+                                        <div class="col-md-5 col-sm-12 taxContainer">
+                                            <label for="taxExempt">
+                                                <input type="checkbox" id="taxExempt" checked> Tax Exempt
+                                            </label>
+                                        </div>
+                                    </div>
                                     <label for="corporateEmail" class="required">Email</label>
                                     <input type="email" class="form-control" id="corporateEmail" name="corporateEmail">
+                                    <label for="corporatePhone">Phone</label>
                                     <div class="phone1">
-                                        <label for="corporatePhone">Phone 1</label>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <span class="desc-remove hidden"></span>
@@ -109,13 +126,12 @@
                                                     <option value="Mobile">Mobile</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6 phone-container phone">
+                                            <div class="col-md-6 phone-container phone padding-left-0">
                                                 <input type="text" class="form-control" id="phone1">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="hidden phone2">
-                                        <label for="corporatePhone">Phone 2</label>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <span class="desc-remove hidden"></span>
@@ -127,13 +143,12 @@
                                                     <option value="Mobile">Mobile</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6 phone-container phone">
+                                            <div class="col-md-6 phone-container phone padding-left-0">
                                                 <input type="text" class="form-control" id="phone2">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="hidden phone3">
-                                        <label for="corporatePhone">Phone 3</label>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <span class="desc-remove hidden"></span>
@@ -145,13 +160,12 @@
                                                     <option value="Mobile">Mobile</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6 phone-container phone">
+                                            <div class="col-md-6 phone-container phone padding-left-0">
                                                 <input type="text" class="form-control" id="phone3">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="hidden phone4">
-                                        <label for="corporatePhone">Phone 4</label>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <span class="desc-remove hidden"></span>
@@ -163,23 +177,14 @@
                                                     <option value="Mobile">Mobile</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6 phone-container phone">
+                                            <div class="col-md-6 phone-container phone padding-left-0">
                                                 <input type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="clearfix">
-                                        <a href="#" class="addPhone">+ Add Number</a>
+                                        <a href="#" class="addPhone">+ Add Phone Number</a>
                                     </div>
-                                    <label for="accountSegment">Account Segment</label>
-                                    <select id="accountSegment" class="form-control" name="accountSegment">
-                                        <option value="">Please Select</option>
-                                        <option value="SomeTestData">Some Test Data</option>
-                                    </select>
-                                    <label for="parentAccount">Parent Account</label>
-                                    <input type="text" class="form-control typeahead" id="parentAccount" name="parentAccount">
-                                    <label for="ExternalAccountID">External Account ID</label>
-                                    <input type="text" class="form-control" id="ExternalAccountID" name="ExternalAccountID">
                                     <div class="row form-group">
                                         <!-- Custom fiedls -->
                                         <div class="col-md-12">
@@ -203,7 +208,7 @@
                                                 <option value="EU">EU</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 padding-left-0">
                                             <label for="billCycle" class="required">Bill Cycle</label>
                                             <select id="billCycle" class="form-control" name="billCycle">
                                                 <option value=""></option>
@@ -253,15 +258,23 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <label for="tax">Tax Number ( SSN / EIN )</label>
-                                    <input type="text" class="form-control" id="tax" name="tax">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="taxExempt">
-                                                <input type="checkbox" id="taxExempt"> Tax Exempt
-                                            </label>
-                                        </div>
-                                    </div>
+                                    <label for="accountSegment">Account Segment</label>
+                                    <select id="accountSegment" class="form-control" name="accountSegment">
+                                        <option value="">Please Select</option>
+                                        <option value="SomeTestData">Some Test Data</option>
+                                    </select>
+                                    <label for="parentAccount">Parent Account</label>
+                                    <select id="parentAccount" class="form-control js-example-basic-single">
+                                        <option></option>
+                                        <option value="p1">Parent Account 1</option>
+                                        <option value="p2">Parent Account 2</option>
+                                        <option value="p3">Parent Account 3</option>
+                                        <option value="sbp1">Sub Parent</option>
+                                        <option value="sbp2">Sub Parent 2</option>
+                                        <option value="sbp3">Sub Parent 3</option>
+                                    </select>
+                                    <label for="ExternalAccountID" class="required">External Account ID</label>
+                                    <input type="text" class="form-control" id="ExternalAccountID" name="ExternalAccountID">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="autoPayment">
@@ -339,7 +352,7 @@
                                                     <option value="NC">North Carolina</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 padding-left-0">
                                                 <label for="postalCodeBilling" class="required">Postal Code</label>
                                                 <input type="text" class="form-control" id="postalCodeBilling" name="postalCodeBilling">
                                             </div>
@@ -409,7 +422,7 @@
                                                     <option value="NC">North Carolina</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4  padding-left-0">
                                                 <label for="postalCodeService" class="required">Postal Code</label>
                                                 <input type="text" class="form-control" id="postalCodeService" maxlength="10">
                                             </div>
@@ -479,7 +492,7 @@
                                                     <option value="NC">North Carolina</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 padding-left-0">
                                                 <label for="postalCodeShipping" class="required">Postal Code</label>
                                                 <input type="text" class="form-control" id="postalCodeShipping" name="postalCodeShipping" maxlength="10">
                                             </div>
@@ -489,7 +502,7 @@
                             </div>
                         </div>
                         <div class="row form-group submitForm">
-                            <div class="col-md-4 col-md-offset-8 col-xs-4">
+                            <div class="col-md-5 col-md-offset-7 col-xs-4">
                                 <button type="submit" class="btn btn-primary btn-lg pull-right" id="submitTheForm">Create Account</button>
                                 <div class="spinner-container" id="createSpin">
                                     <div class="spinner">

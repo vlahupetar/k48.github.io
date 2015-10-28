@@ -23,6 +23,9 @@ h3 {
     margin-bottom: 20px;
     margin-top: 10px;
 }
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    opacity: 0.5;
+}
 
 header .row h6 strong, label strong {
     font-size: 18px;
@@ -72,9 +75,9 @@ select.form-control {
 .required:before {
     content: '*';
     position: absolute;
-    left: -12px;
+    left: -11px;
     color: #d3222a;
-    font-size: 16px;
+    font-size: 15px;
     top: -6px;
 }
 
@@ -146,33 +149,6 @@ select.form-control {
     padding: 2px 0 0 2px;
 }
 
-/*media*/
-@media (max-width: 767px){
-    .divider {
-        background: none;
-    }
-    .switcher .nav-tabs {
-        left: 0;
-    }
-}
-@media (min-width: 767px){
-    #nav-container {
-        left: 0;
-    }
-}
-@media (max-width: 991px){
-    .wrapper {
-        padding: 0 0 0 20px;
-    }
-}
-@media (min-width: 1200px){
-    #accountDetails {
-        padding: 40px 45px 0 165px;
-    }
-    .container {
-        width: 1024px;
-    }
-}
 input.error, input.error:focus, select.error, select.error:focus {
    border: 1px solid #d3222a;
 }
@@ -206,7 +182,7 @@ input.error, input.error:focus, select.error, select.error:focus {
     left: 0;
     margin: auto;
     position: absolute;
-    right: -90px;
+    right: -160px;
     top: 0;
     width: 40px;
     z-index: 1001;
@@ -394,17 +370,6 @@ input.error, input.error:focus, select.error, select.error:focus {
     margin-top: 8px;
 }
 
-.phone-desc-add {
-    background-image: url('../assets/add_comment.png');
-}
-
-.phone-desc-del {
-    background-image: url('../assets/del_comment.png');
-    right: -25px;
-    width: 17px;
-    opacity: 0.5;
-}
-
 .desc-remove {
     background-image: url('../assets/delete_phone.png');
     position: absolute;
@@ -415,72 +380,72 @@ input.error, input.error:focus, select.error, select.error:focus {
     cursor: pointer;
 }
 
-.phone-desc-del:hover, .phone-desc-add:hover, .desc-remove:hover {
-    opacity: 1;
+.pull-right:last-child {
+    margin-right: 20px;
+}
+.the-legend {
+        font-size: 0.9em;
+        color: #A5A5A5;
+        text-align: left;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+        margin-bottom: -10px;
+}
+.the-fieldset {
+    border: 1px dashed #A5A5A5;
+    padding: 0 15px 15px 15px;
+    margin: 0 0 1.5em 0;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
 }
 
-.phone-desc-del, .phone-desc-add, .desc-remove {
-    opacity: 0.5;
-}
-.phone-desc-del, .phone-desc-add, .desc-remove {
-    opacity: 0.5;
-}
-.twitter-typeahead {
-    display: block !important;
-}
-.twitter-typeahead .tt-query,
-.twitter-typeahead .tt-hint {
+.margin-0 {
     margin-bottom: 0;
 }
-.tt-hint {
-    display: block;
-    width: 100%;
-    height: 34px;
-    padding: 8px 8px;
-    font-size: 14px;
-    line-height: 1.428571429;
-    color: #999;
-    vertical-align: middle;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-          transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-}
-.tt-menu {
-    position: relative;
-    width: 100%;
-    margin-top: 2px;
-    padding: 5px 0;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    background-clip: padding-box;
 
+.padding-left-0 {
+    padding-left: 0;
 }
-.tt-suggestion {
-    display: block;
-    padding: 3px 20px;
+.padding-right-0 {
+    padding-right: 0;
 }
-.tt-suggestion:hover {
-    background-color: #3d77f9;
-    color: #fff;
+
+/*media*/
+@media (max-width: 767px){
+    .divider {
+        background: none;
+    }
+    .switcher .nav-tabs {
+        left: 0;
+    }
 }
-.tt-suggestion.tt-is-under-cursor {
-    color: #fff;
-    background-color: #428bca;
+@media (min-width: 768px){
+    #nav-container {
+        left: 0;
+    }
 }
-.tt-suggestion.tt-is-under-cursor a {
-    color: #fff;
+@media (max-width: 991px){
+    .wrapper {
+        padding: 0 0 0 20px;
+    }
 }
-.tt-suggestion p {
-    margin: 0;
+@media (min-width: 992px){
+    .the-fieldset {
+        margin: 0 -15px 15px -15px;
+    }
 }
-.pull-right:last-child {
-    margin-right: 5px;
+@media (min-width: 1200px){
+    #accountDetails {
+        padding: 40px 45px 0 165px;
+    }
+    .container {
+        width: 1024px;
+    }
+}
+.taxContainer {
+    margin-top: 29px;
+}
+.phone1, .phone2, .phone3, .phone4 {
+    margin-bottom: 17px;
 }
