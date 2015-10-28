@@ -45,7 +45,7 @@ $(document).ready(function(){
 
     $('#taxExempt').click(function(){
         var $this = $(this);
-        if ($this.is(':checked')) {
+        if (!$this.is(':checked')) {
             $("#tax").rules("add", {
                 minlength: false,
                 maxlength: false,
