@@ -201,6 +201,16 @@ $(document).ready(function(){
         } else {
             $('#sameServiceEnterprise').parent().addClass('hidden');
         }
+        if (!$this.is(':checked') && $('#showShippingEnterprise').is(':checked')) {
+            console.log('dfss');
+            $("#sameShippingEnterprise").prop('checked', false); 
+            $('#shippingBlockEnterprise').removeClass('hidden');
+        }
+        if (!$this.is(':checked') && $('#showServiceEnterprise').is(':checked')) {
+            console.log('dfss');
+            $("#sameServiceEnterprise").prop('checked', false); 
+            $('#serviceBlockEnterprise').removeClass('hidden');
+        }
     });
 
     // showing additional phone number in case it is needed
