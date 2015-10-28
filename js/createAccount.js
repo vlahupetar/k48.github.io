@@ -4,6 +4,7 @@ $(document).ready(function(){
     $("#accountCategory").prop("disabled", true);
     $("#paymentTerm").prop("disabled", true);
     $("#billCycle").prop("disabled", true);
+    $("#tax").prop("disabled", true);
     $("#spinnerAcc").css('display', 'block');
     $("#spinnerPay").css('display', 'block');
     $("#spinnerBill").css('display', 'block');
@@ -12,7 +13,6 @@ $(document).ready(function(){
         $("#currency").prop("disabled", false);
         $("#accountCategory").prop("disabled", false);
         $("#paymentTerm").prop("disabled", false);
-        $("#billCycle").prop("disabled", false);
         $("#spinnerAcc").css('display', 'none');
         $("#spinnerPay").css('display', 'none');
         $("#spinnerBill").css('display', 'none');
@@ -43,7 +43,98 @@ $(document).ready(function(){
         
     });
 
-
+    $('#taxExempt').click(function(){
+        var $this = $(this);
+        if ($this.is(':checked')) {
+            $("#tax").rules("add", {
+                minlength: false,
+                maxlength: false,
+                number: false
+            });
+            $("#tax").focus();
+            $("#tax").blur();
+            $("#tax").prop("disabled", true);
+        } else {
+            $("#tax").rules("add", {
+                minlength: 5,
+                maxlength: 20,
+                number: true
+            });
+            $("#tax").prop("disabled", false);
+        }
+    });
+    $('#companyName').on('focusout', function() {
+        var $this = $(this);
+        if ($this.val()) {
+            $("#firstName").rules("add", {
+                required: false,
+            });
+            $("#firstName").blur();
+            $("#LastName").rules("add", {
+                required: false,
+            });
+            $("#LastName").blur();
+            $('#firstName').prop("disabled", true);
+            $('#LastName').prop("disabled", true);
+            $('#firstName').prev().css("opacity", "0.5");
+            $('#LastName').prev().css("opacity", "0.5");
+            $("#firstName").rules("add", {
+                required: false,
+            });
+            $("#LastName").rules("add", {
+                required: false,
+            });
+        } else {
+            $('#firstName').prop("disabled", false);
+            $('#LastName').prop("disabled", false);
+            $('#firstName').prev().css("opacity", "1");
+            $('#LastName').prev().css("opacity", "1");
+        }
+    });
+    $('#firstName').on('focusout', function() {
+        var $this = $(this);
+        if ($this.val()) {
+            $("#companyName").rules("add", {
+                required: false,
+            });
+            $("#companyName").blur();
+            $('#companyName').prop("disabled", true);
+            $('#companyName').prev().css("opacity", "0.5");
+            
+        } else if ($('#LastName').val()) {
+            $('#companyName').prop("disabled", true);
+            $('#companyName').prev().css("opacity", "0.5");
+            $("#companyName").rules("add", {
+                required: false,
+            });
+        } else {
+            $('#companyName').prop("disabled", false);
+            $('#companyName').prev().css("opacity", "1");
+        }
+    });
+    $('#LastName').on('focusout', function() {
+        var $this = $(this);
+        if ($this.val()) {
+            $("#companyName").rules("add", {
+                required: false,
+            });
+            $("#companyName").blur();
+            $('#companyName').prop("disabled", true);
+            $('#companyName').prev().css("opacity", "0.5");
+            $("#companyName").rules("add", {
+                required: false,
+            });
+        } else if ($('#firstName').val()) {
+            $('#companyName').prop("disabled", true);
+            $('#companyName').prev().css("opacity", "0.5");
+            $("#companyName").rules("add", {
+                required: false,
+            });
+        } else {
+            $('#companyName').prop("disabled", false);
+            $('#companyName').prev().css("opacity", "1");
+        }
+    });
     //$(".spinner-container").css("display", "block");
     // here is logic to add another block of fields
     // if user wants to add more than one address
@@ -122,6 +213,22 @@ $(document).ready(function(){
         
     });
 
+    var previous1, previous2, previous3, previous4; // variables to store previous values from select
+    //to prevent option lose
+
+    $('.phone-type1').on('focus', function(){
+        previous1 = this.value;
+    });
+    $('.phone-type2').on('focus', function(){
+        previous2 = this.value;
+    });
+    $('.phone-type3').on('focus', function(){
+        previous3 = this.value;
+    });
+    $('.phone-type4').on('focus', function(){
+        previous4 = this.value;
+    });
+
     $('.phone-type1').on('change', function(){
         var $this = $(this);
         var selected = $this.val();
@@ -129,6 +236,11 @@ $(document).ready(function(){
             $(".phone-type2 option[value='"+selected+"']").remove();
             $(".phone-type3 option[value='"+selected+"']").remove();
             $(".phone-type4 option[value='"+selected+"']").remove();
+        }
+        if (previous1){
+            $(".phone-type2").append("<option value='"+previous1+"'>"+previous1+"</option>");
+            $(".phone-type3").append("<option value='"+previous1+"'>"+previous1+"</option>");
+            $(".phone-type4").append("<option value='"+previous1+"'>"+previous1+"</option>");
         }
     });
     $('.phone-type2').on('change', function(){
@@ -139,6 +251,11 @@ $(document).ready(function(){
             $(".phone-type3 option[value='"+selected+"']").remove();
             $(".phone-type4 option[value='"+selected+"']").remove();
         }
+        if (previous2){
+            $(".phone-type1").append("<option value='"+previous2+"'>"+previous2+"</option>");
+            $(".phone-type3").append("<option value='"+previous2+"'>"+previous2+"</option>");
+            $(".phone-type4").append("<option value='"+previous2+"'>"+previous2+"</option>");
+        }
     });
     $('.phone-type3').on('change', function(){
         var $this = $(this);
@@ -148,6 +265,11 @@ $(document).ready(function(){
             $(".phone-type2 option[value='"+selected+"']").remove();
             $(".phone-type4 option[value='"+selected+"']").remove();
         }
+        if (previous3){
+            $(".phone-type1").append("<option value='"+previous3+"'>"+previous3+"</option>");
+            $(".phone-type2").append("<option value='"+previous3+"'>"+previous3+"</option>");
+            $(".phone-type4").append("<option value='"+previous3+"'>"+previous3+"</option>");
+        }
     });
     $('.phone-type4').on('change', function(){
         var $this = $(this);
@@ -156,6 +278,11 @@ $(document).ready(function(){
             $(".phone-type1 option[value='"+selected+"']").remove();
             $(".phone-type2 option[value='"+selected+"']").remove();
             $(".phone-type3 option[value='"+selected+"']").remove();
+        }
+        if (previous4){
+            $(".phone-type1").append("<option value='"+previous4+"'>"+previous4+"</option>");
+            $(".phone-type2").append("<option value='"+previous4+"'>"+previous4+"</option>");
+            $(".phone-type3").append("<option value='"+previous4+"'>"+previous4+"</option>");
         }
     });
     // autocomplete countries and states
@@ -167,14 +294,23 @@ $(document).ready(function(){
     // select countries and states for USA
     $('#countriesBilling').on('change', function(){
         if ($("#select2-countriesBilling-container").text() !== 'United States') {
-            $('#state').parent().removeClass('hidden');
+            //$('#state').parent().removeClass('hidden');
+            /*$("#state").rules("add", {
+                required: false
+            });*/
             $('#statesUS').parent().addClass('hidden');
+            $("#postalCodeBilling").parent().removeClass('padding-left-0');
+            $("#postalCodeBilling").parent().removeClass('col-md-4');
+            $("#postalCodeBilling").parent().addClass('col-md-12');
             $("#postalCodeBilling").rules("add", {
                 number: false
             });
         } else {
-            $('#state').parent().addClass('hidden');
+            //$('#state').parent().addClass('hidden');
             $('#statesUS').parent().removeClass('hidden');
+            $("#postalCodeBilling").parent().addClass('padding-left-0');
+            $("#postalCodeBilling").parent().addClass('col-md-4');
+            $("#postalCodeBilling").parent().removeClass('col-md-12');
             $("#postalCodeBilling").rules("add", {
                 number: true
             });
@@ -182,30 +318,56 @@ $(document).ready(function(){
     });
     $('#countriesService').on('change', function(){
         if ($("#select2-countriesService-container").text() !== 'United States') {
-            $('#stateServiceOthers').parent().removeClass('hidden');
+            //$('#stateServiceOthers').parent().removeClass('hidden');
             $('#statesUSService').parent().addClass('hidden');
+            $("#postalCodeService").parent().removeClass('padding-left-0');
+            $("#postalCodeService").parent().removeClass('col-md-4');
+            $("#postalCodeService").parent().addClass('col-md-12');
+            $("#postalCodeService").rules("add", {
+                number: false
+            });
         } else {
-            $('#stateServiceOthers').parent().addClass('hidden');
+           // $('#stateServiceOthers').parent().addClass('hidden');
             $('#statesUSService').parent().removeClass('hidden');
+            $("#postalCodeService").parent().addClass('padding-left-0');
+            $("#postalCodeService").parent().addClass('col-md-4');
+            $("#postalCodeService").parent().removeClass('col-md-12');
+            $("#postalCodeService").rules("add", {
+                number: true
+            });
         }
     });
     $('#countriesShipping').on('change', function(){
         if ($("#select2-countriesShipping-container").text() !== 'United States') {
-            $('#stateShippingOthers').parent().removeClass('hidden');
+            //$('#stateShippingOthers').parent().removeClass('hidden');
             $('#statesUSShipping').parent().addClass('hidden');
+            $("#postalCodeShipping").parent().removeClass('padding-left-0');
+            $("#postalCodeShipping").parent().removeClass('col-md-4');
+            $("#postalCodeShipping").parent().addClass('col-md-12');
+            $("#postalCodeShipping").rules("add", {
+                number: false
+            });
         } else {
-            $('#stateShippingOthers').parent().addClass('hidden');
+           // $('#stateServiceOthers').parent().addClass('hidden');
             $('#statesUSShipping').parent().removeClass('hidden');
+            $("#postalCodeShipping").parent().addClass('padding-left-0');
+            $("#postalCodeShipping").parent().addClass('col-md-4');
+            $("#postalCodeShipping").parent().removeClass('col-md-12');
+            $("#postalCodeShipping").rules("add", {
+                number: true
+            });
         }
     });
     // Bill Cycle changes depending on currency selected value
     $('#currency').on('change', function(){
         if ($("#currency").val() === 'USD') {
+            $("#billCycle").prop("disabled", false);
             $("#billCycle option").each(function() {
                 $(this).remove();
             });
             $('#billCycle').append("<option value='USD'>Test Data For USD</option>");
         } else if ($("#currency").val() === 'EU') {
+            $("#billCycle").prop("disabled", false);
             $("#billCycle option").each(function() {
                 $(this).remove();
             });
@@ -214,6 +376,7 @@ $(document).ready(function(){
             $("#billCycle option").each(function() {
                 $(this).remove();
                 $('#billCycle').append("<option value=''></option>");
+                $("#billCycle").prop("disabled", true);
             });
         }
     });
@@ -236,8 +399,7 @@ $(document).ready(function(){
                 maxlength: 20
             },
             companyName: {
-                minlength: 2,
-                maxlength: 20
+                minlength: 1
             },
             tax: {
                 minlength: 2,
@@ -283,6 +445,49 @@ $(document).ready(function(){
         errorElement: "div",
         submitHandler: function(form, event) {
             event.preventDefault(event);
+            if ($("#firstName").prop('disabled') && $("#LastName").prop('disabled')){
+                    $("#companyName").rules("add", {
+                        required: true,
+                        messages: {
+                            required: "Last name field is required"
+                        }
+                    });
+                } else if ($("#companyName").prop('disabled')){
+                    $("#firstName").rules("add", {
+                        required: true,
+                        messages: {
+                            required: "First name field is required"
+                        }
+                    });
+                    $("#LastName").rules("add", {
+                        required: true,
+                        messages: {
+                            required: "Last name field is required"
+                        }
+                    });
+                    $("#companyName").rules("add", {
+                        required: false
+                    });
+                } else {
+                    $("#firstName").rules("add", {
+                        required: true,
+                        messages: {
+                            required: "First name field is required"
+                        }
+                    });
+                    $("#LastName").rules("add", {
+                        required: true,
+                        messages: {
+                            required: "Last name field is required"
+                        }
+                    });
+                    $("#companyName").rules("add", {
+                        required: true,
+                        messages: {
+                            required: "Company name field is required"
+                        }
+                    });
+                }
             $("#enterprise :input").prop("disabled", true);
             $("#enterprise :checkbox").prop("disabled", true);
             $("#createSpin").css("display", "block");
@@ -292,6 +497,22 @@ $(document).ready(function(){
             // adding required fields logic after click on submit button
                 $("#enterprise :input").prop("disabled", false);
                 $("#enterprise :checkbox").prop("disabled", false);
+                if (!$("#billCycle").val()) {
+                    $("#billCycle").prop("disabled", true);
+                }
+                if (!$("#tax").val()) {
+                    $("#tax").prop("disabled", true);
+                }
+                if ($("#firstName").val() || $("#LastName").val()) {
+                    $("#companyName").prop("disabled", true);
+                } else if ($("#companyName").val() ) {
+                    $("#firstName").prop("disabled", true);
+                    $("#LastName").prop("disabled", true);
+                } else {
+                    $("#companyName").prop("disabled", false);
+                    $("#firstName").prop("disabled", false);
+                    $("#LastName").prop("disabled", false);
+                }
                 $("#createSpin").css("display", "none");
                 $("body").css("opacity", "1");
                 $("#corporateEmail").rules("add", {
@@ -309,18 +530,7 @@ $(document).ready(function(){
                         number: true
                     });
                 }*/
-                $("#firstName").rules("add", {
-                    required: true,
-                    messages: {
-                        required: "First name field is required"
-                    }
-                });
-                $("#LastName").rules("add", {
-                    required: true,
-                    messages: {
-                        required: "Last name field is required"
-                    }
-                });
+                
                 $("#billCycle").rules("add", {
                     required: true,
                     messages: {
@@ -363,6 +573,12 @@ $(document).ready(function(){
                         required: "Currency is required"
                     }
                 });
+                $("#ExternalAccountID").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "External Account ID is required"
+                    }
+                });
                 // we should also add/remove some validation for additional address fields
                 // in cases it is showing or not
                 /*if($("#showShippingEnterprise").is(":checked") && !($("#sameShippingEnterprise").is(":checked"))) {
@@ -377,7 +593,7 @@ $(document).ready(function(){
                 // if coutry is US
                 // state is filled by default, there will be no possibility
                 // to make it empty
-                if(!($("#state").parent().is(":visible"))) {
+                /*if(!($("#state").parent().is(":visible"))) {
                     $("#state").rules("add", {
                         required: true,
                         messages: {
@@ -388,7 +604,7 @@ $(document).ready(function(){
                     $("#state").rules("add", {
                         required: false
                     });
-                }
+                }*/
                 if ($("#enterprise").valid()){
                     // here validation from backend should be applied
                     $("#errormessages").parent().removeClass('hidden');
@@ -411,8 +627,25 @@ $(document).ready(function(){
                         $("#firstName").rules("add", {
                             required: false
                         });
+                        $("#companyName").rules("add", {
+                            required: false
+                        });
                     });
                     $('#LastName').on('focus', function(){
+                        $("#LastName").rules("add", {
+                            required: false
+                        });
+                        $("#companyName").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#companyName').on('focus', function(){
+                        $("#companyName").rules("add", {
+                            required: false
+                        });
+                        $("#firstName").rules("add", {
+                            required: false
+                        });
                         $("#LastName").rules("add", {
                             required: false
                         });
@@ -444,6 +677,11 @@ $(document).ready(function(){
                     });
                     $('#state').on('focus', function(){
                         $("#state").rules("add", {
+                            required: false
+                        });
+                    });
+                    $('#ExternalAccountID').on('focus', function(){
+                        $("#ExternalAccountID").rules("add", {
                             required: false
                         });
                     });
