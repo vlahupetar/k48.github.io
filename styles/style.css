@@ -10,7 +10,7 @@ label {
 }
 
 input[type="radio"], input[type="checkbox"] {
-    margin: -2px 0 0;
+    margin: -2px 3px 0 0;
     vertical-align: middle;
 }
 
@@ -152,7 +152,7 @@ select.form-control {
 input.error, input.error:focus, select.error, select.error:focus {
    border: 1px solid #d3222a;
 }
-.error+.error {
+.error+.error, .error {
     color: #d3222a;
 }
 #errormessages {
@@ -448,4 +448,7 @@ input.error, input.error:focus, select.error, select.error:focus {
 }
 .phone1, .phone2, .phone3, .phone4 {
     margin-bottom: 17px;
+}
+.margin-top-10 {
+    margin-top: 10px;
 }
