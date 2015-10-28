@@ -144,21 +144,27 @@ $(document).ready(function(){
     $('#showShippingEnterprise').click(function(){
         var $this = $(this);
         if ($this.is(':checked')) {
-            $('#sameShippingEnterprise').parent().removeClass('hidden');
             $('#shippingBlockEnterprise').removeClass('hidden');
+            if ($('#showBilling').is(':checked')) {
+                $('#sameShippingEnterprise').parent().removeClass('hidden');
+            }
         } else {
             $('#sameShippingEnterprise').parent().addClass('hidden');
             $('#shippingBlockEnterprise').addClass('hidden');
+            $("#sameShippingEnterprise").prop('checked', false); 
         }
     });
     $('#showServiceEnterprise').click(function(){
         var $this = $(this);
         if ($this.is(':checked')) {
-            $('#sameServiceEnterprise').parent().removeClass('hidden');
             $('#serviceBlockEnterprise').removeClass('hidden');
+            if ($('#showBilling').is(':checked')) {
+                $('#sameServiceEnterprise').parent().removeClass('hidden');
+            }
         } else {
             $('#sameServiceEnterprise').parent().addClass('hidden');
             $('#serviceBlockEnterprise').addClass('hidden');
+            $("#sameServiceEnterprise").prop('checked', false); 
         }
     });
     $('#sameServiceEnterprise').click(function(){
@@ -184,6 +190,16 @@ $(document).ready(function(){
             $('#BillingAdd').removeClass('hidden');
         } else {
             $('#BillingAdd').addClass('hidden');
+        }
+        if ($this.is(':checked') && $('#showShippingEnterprise').is(':checked')) {
+            $('#sameShippingEnterprise').parent().removeClass('hidden');
+        } else {
+            $('#sameShippingEnterprise').parent().addClass('hidden');
+        }
+        if ($this.is(':checked') && $('#showServiceEnterprise').is(':checked')) {
+            $('#sameServiceEnterprise').parent().removeClass('hidden');
+        } else {
+            $('#sameServiceEnterprise').parent().addClass('hidden');
         }
     });
 
@@ -443,6 +459,16 @@ $(document).ready(function(){
             }
         },
         errorElement: "div",
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass(errorClass).removeClass(validClass);
+            $(element.form).find("label[for=" + element.id + "]")
+              .addClass(errorClass);
+          },
+          unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass(errorClass).addClass(validClass);
+            $(element.form).find("label[for=" + element.id + "]")
+              .removeClass(errorClass);
+          },
         submitHandler: function(form, event) {
             event.preventDefault(event);
             if ($("#firstName").prop('disabled') && $("#LastName").prop('disabled')){
